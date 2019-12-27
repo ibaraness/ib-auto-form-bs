@@ -15,7 +15,8 @@ export {
   IbAutoFormControlGroup,
   ValidationMap,
   FormValues,
-  ControlValidationEvent
+  ControlValidationEvent,
+  IbAutoFormGroup,
 } from "./lib/models/ib-auto-form";
 
 

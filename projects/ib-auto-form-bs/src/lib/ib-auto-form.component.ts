@@ -1,6 +1,6 @@
 import {Component, EventEmitter, Input, OnInit, Output} from "@angular/core";
 import {FormControl, FormGroup} from "@angular/forms";
-import {IbAutoFormControlGroup, FormValues} from "./models/ib-auto-form";
+import {FormValues, IbAutoFormControlGroup} from "./models/ib-auto-form";
 import {getContrtolsFromGroups} from "./utils/utils";
 import {IbAutoFormValidationService} from "./services/ib-auto-form-validation.service";
 import {BehaviorSubject} from "rxjs";
@@ -10,13 +10,24 @@ import {BehaviorSubject} from "rxjs";
   template: `
       <form *ngIf="form && controlGroups" [formGroup]="form">
           <ng-container *ngFor="let group of controlGroups">
-              <ng-container *ngFor="let control of group.controls" libIBDynamicControl [submit$]="submit$" [control]="control"
-                            [form]="form"></ng-container>
+              <ng-container *ngTemplateOutlet="useGroups ? groupTemp: controlsTemp; context:{group: group}"></ng-container>
           </ng-container>
-          <pre>
-    {{ form.value | json }}
-  </pre>
       </form>
+
+      <ng-template #controlsTemp let-group="group">
+          <ng-container *ngFor="let control of group.controls"
+                        libIBDynamicControl
+                        [submit$]="submit$"
+                        [control]="control"
+                        [form]="form">
+          </ng-container>
+      </ng-template>
+
+      <ng-template #groupTemp let-group="group">
+          <lib-auto-form-group-factory [group]="group">
+              <ng-container *ngTemplateOutlet="controlsTemp; context:{group: group}"></ng-container>
+          </lib-auto-form-group-factory>
+      </ng-template>
   `
 })
 export class IbAutoFormComponent implements OnInit {
@@ -24,6 +35,7 @@ export class IbAutoFormComponent implements OnInit {
    * a list of DynamicFormsControlGroup objects, which contains all the fields and groups metadata
    */
   @Input() controlGroups: IbAutoFormControlGroup[];
+  @Input() useGroups: boolean = true;
   @Output() formReady: EventEmitter<FormGroup> = new EventEmitter();
   public submit$: BehaviorSubject<boolean> = new BehaviorSubject(null);
   public form: FormGroup;

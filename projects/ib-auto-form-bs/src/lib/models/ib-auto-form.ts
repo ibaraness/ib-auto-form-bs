@@ -1,5 +1,5 @@
-import { ControlValueAccessor, FormGroup, ValidatorFn } from "@angular/forms";
-import {Type} from "@angular/core";
+import {ControlValueAccessor, FormGroup} from "@angular/forms";
+import {Input, Type} from "@angular/core";
 
 export interface IbAutoFormControl extends ControlValueAccessor {
   onChange: (value: any) => void;
@@ -34,11 +34,13 @@ export interface DynamicControlOptions {
   data?: any;
   selectOptions?: ControlSimpleSelectOption[];
   validations?: Validation[];
+  className?: string;
 }
 
 export interface IbAutoFormControlAdapter {
   control: DynamicControlOptions;
   form: FormGroup;
+
   validate(): void;
 }
 
@@ -50,6 +52,9 @@ export interface IbAutoFormControlGroup {
   controls?: DynamicControlOptions[];
   groups?: IbAutoFormControlGroup[];
   tags?: string[];
+  id?: string;
+  title?: string;
+  className?: string;
 }
 
 
@@ -64,4 +69,8 @@ export interface FormValues {
 export interface ControlValidationEvent {
   error: boolean;
   errorMessage: string;
+}
+
+export abstract class IbAutoFormGroup {
+  @Input() group: IbAutoFormControlGroup;
 }

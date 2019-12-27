@@ -1,9 +1,6 @@
-
-import {customDynamicControlAdapters} from "./custom_controls/custom-config";
 import {IbAutoFormComponent, IbAutoFormConfigService, IbAutoFormControlGroup} from "ib-auto-form-bs";
 import {Component, OnInit, ViewChild} from "@angular/core";
-
-
+import {CustomGroupComponent} from "./custom_controls/components/custom-group.component";
 
 
 @Component({
@@ -14,13 +11,10 @@ import {Component, OnInit, ViewChild} from "@angular/core";
 export class AppComponent implements OnInit {
 
   @ViewChild("dynamicForms") dynamicForms: IbAutoFormComponent;
-
-  constructor(private configService: IbAutoFormConfigService){
-    //this.configService.config = customDynamicControlAdapters;
-  }
-
   public controlGroups: IbAutoFormControlGroup[] = [
     {
+      title: 'Personal Details',
+      className: 'personal-details-section',
       controls: [
         {
           id: "first_name",
@@ -121,16 +115,27 @@ export class AppComponent implements OnInit {
       ]
     },
     {
+      title: 'Other Details',
       controls: [
         {
           id: 'group2-input',
           type: 'textbox',
           title: 'Group2 Input',
           defaultValue: 'Text123'
+        },
+        {
+          id: 'group2-input2',
+          type: 'textbox',
+          title: 'Group2 Input2',
         }
       ]
     }
   ];
+
+  constructor(private configService: IbAutoFormConfigService) {
+    // this.configService.config = customDynamicControlAdapters;
+    configService.customGroupComponent = CustomGroupComponent;
+  }
 
   ngOnInit(): void {
 
