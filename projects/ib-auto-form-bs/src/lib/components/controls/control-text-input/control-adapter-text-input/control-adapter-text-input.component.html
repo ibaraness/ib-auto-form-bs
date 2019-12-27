@@ -1,0 +1,14 @@
+<div *ngIf="form"
+     [formGroup]="form" libIBControlValidator
+     (statusChange)="onStatusChange($event)"
+     [form]="form" [control]="control">
+  <lib-ib-control-text-input
+  [control]="control"
+  [formControlName]="control.id"
+  [invalid]="invalid"
+  [valid]="!invalid && dirty"
+  [errorMessage]="errorMessage"
+  [required]="required"
+  (blur)="validate()"
+  ></lib-ib-control-text-input>
+</div>
