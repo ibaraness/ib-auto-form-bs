@@ -1,24 +1,54 @@
-# IbDynamicForms
+# IbAutoFormBs
 
 This library was generated with [Angular CLI](https://github.com/angular/angular-cli) version 7.2.0.
 
-## Code scaffolding
+## description
+This library basically let you create a dynamic form component using bootstrap from controls (Like registration etc.) <br/>
+Currently as it is, it supports 4 types of form controls:
+* Text input (text, password, email etc.)
+* Select 
+* Radio
+* Checkbox
 
-Run `ng generate component component-name --project ib-dynamic-forms` to generate a new component. You can also use `ng generate directive|pipe|service|class|guard|interface|enum|module --project ib-dynamic-forms`.
-> Note: Don't forget to add `--project ib-dynamic-forms` or else it will be added to the default project in your `angular.json` file. 
+With that being said, it can support any type of control from any other package (Like Angular materials) using customization tools.
+Forms are being created using a JavaScript Object or a JSON file which contains instructions for the form builder. Different forms for different users can be created on the fly.
 
-## Build
+## Simple usage
+You can create a simple working form using **IbAutoFormComponent** like that: <br>
+First import **IbAutoFormBsModule** to your main module:
 
-Run `ng build ib-dynamic-forms` to build the project. The build artifacts will be stored in the `dist/` directory.
+```javascript
+import {IbAutoFormBsModule} from 'ib-auto-form-bs';
 
-## Publishing
+@NgModule({
+  ...
+  imports: [
+    IbAutoFormBsModule.forRoot(),
+  ],
+  ...
+})
+export class AppModule { }
 
-After building your library with `ng build ib-dynamic-forms`, go to the dist folder `cd dist/ib-dynamic-forms` and run `npm publish`.
+``` 
+Second, add **IbAutoFormComponent** to your component template:
+```javascript
+<lib-ib-dynamic-forms [controlGroups]="controlGroups"></lib-ib-dynamic-forms>
+```
 
-## Running unit tests
+As you can see, we assigned 'controlGroups' property to IbAutoFormComponent 'controlGroups' input. ControlGroups is a list of instructions to create our form.
+In your component template crate a public property called 'controlGroups' like that:
 
-Run `ng test ib-dynamic-forms` to execute the unit tests via [Karma](https://karma-runner.github.io).
-
-## Further help
-
-To get more help on the Angular CLI use `ng help` or go check out the [Angular CLI README](https://github.com/angular/angular-cli/blob/master/README.md).
+```javascript
+controlGroups = [
+    {
+        controls: [
+            {
+                id: 'firstname',
+                title: 'First Name',
+                type: 'textbox'
+            }   
+        ]       
+    }
+]
+```
+If you will try to run your project on the browser, you should see a text input with 'First Name' label.
