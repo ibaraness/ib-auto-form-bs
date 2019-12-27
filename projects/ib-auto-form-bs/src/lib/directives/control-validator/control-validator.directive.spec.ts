@@ -1,21 +1,18 @@
 import { ControlValidatorDirective } from "./control-validator.directive";
 import { TestBed, ComponentFixture } from "@angular/core/testing";
-import { NO_ERRORS_SCHEMA } from "@angular/core";
+import {Component, NO_ERRORS_SCHEMA} from "@angular/core";
 import { IbAutoFormValidationService } from "../../services/ib-auto-form-validation.service";
 import { FormGroup, FormControl, Validators } from "@angular/forms";
 import { DynamicControlOptions } from "../../models/ib-auto-form";
 
 @Component({
-  selector: "app-container",
+  selector: "lib-container",
   template:
     "<div id='container' [form]='form' [control]='control' libIBControlValidator></div>"
 })
 export class TestConatinerComponent {
   public form: FormGroup;
   public control: DynamicControlOptions;
-  onStatusChange() {
-    // TODO: Add action
-  }
 }
 
 describe("ControlValidatorDirective", () => {
