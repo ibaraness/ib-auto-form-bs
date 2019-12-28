@@ -35,6 +35,7 @@ export interface DynamicControlOptions {
   selectOptions?: ControlSimpleSelectOption[];
   validations?: Validation[];
   className?: string;
+  placeholder?: string;
 }
 
 export interface IbAutoFormControlAdapter {
