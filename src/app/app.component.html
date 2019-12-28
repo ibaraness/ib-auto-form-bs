@@ -1,9 +1,9 @@
 <div class="container">
     <div class="row">
         <div class="col">
-            <h3>Contact From</h3>
-            <lib-ib-dynamic-forms [controlGroups]="controlGroups" #dynamicForms></lib-ib-dynamic-forms>
-            <button type="submit" class="btn btn-primary" (click)="submit()">Submit</button>
+            <h3>Form without groups</h3>
+            <lib-ib-dynamic-forms [controlGroups]="controlGroups" [useGroups]="false" #dynamicForms></lib-ib-dynamic-forms>
+            <button type="submit" class="btn btn-primary" (click)="dynamicForms.getFormData()">Submit</button>
         </div>
         <div class="col pt-5">
           <pre>
@@ -11,4 +11,16 @@
           </pre>
         </div>
     </div>
+  <div class="row">
+    <div class="col">
+      <h3 class="mt-5">Form with groups</h3>
+      <lib-ib-dynamic-forms [controlGroups]="controlGroups" #dynamicForms2></lib-ib-dynamic-forms>
+      <button type="submit" class="btn btn-primary" (click)="dynamicForms2.getFormData()">Submit</button>
+    </div>
+    <div class="col pt-5">
+          <pre>
+            {{ dynamicForms2.form.value | json }}
+          </pre>
+    </div>
+  </div>
 </div>
