@@ -18,6 +18,8 @@ import {ControlValidatorDirective} from "../../../directives/control-validator/c
                   }"
                  class="form-check-input"
                  [formControlName]="control.id"
+                 autocomplete="on"
+                 [name]="control.id"
                  (blur)="validate()"
                  [id]="now+control.id">
           <label class="form-check-label" [for]="now+control.id">{{control.title}}</label>

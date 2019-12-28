@@ -10,8 +10,8 @@ import {ControlValidationEvent, ControlValidatorDirective, DynamicControlOptions
            [formGroup]="form" libIBControlValidator
            (statusChange)="onStatusChange($event)"
            [form]="form" [control]="control">
-          <label>{{control?.title + (required ? '*' : '')}} </label>
-          <input type="text" [formControlName]="control.id" [name]="control.id" (blur)="validate()" autocomplete="on">
+          <label [for]="control.id">{{control?.title + (required ? '*' : '')}} </label>
+          <input type="text" [formControlName]="control.id" [name]="control.id" [id]="control.id" (blur)="validate()" autocomplete="on">
           <div>{{errorMessage}}</div>
       </div>
 

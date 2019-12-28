@@ -14,6 +14,9 @@
   [ngClass]="{
     'is-invalid': invalid,
     'is-valid': valid
-  }">
+  }"
+  autocomplete="on"
+  [name]="control.id"
+  >
     <div class="invalid-feedback">{{errorMessage}}</div>
 </div>

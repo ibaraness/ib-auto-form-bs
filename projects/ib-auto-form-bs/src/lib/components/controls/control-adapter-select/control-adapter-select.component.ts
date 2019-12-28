@@ -14,7 +14,8 @@ import {ControlValidatorDirective} from "../../../directives/control-validator/c
 
           <label [for]="now+control.id">{{control.title}}</label>
 
-          <select class="form-control" [formControlName]="control.id" [id]="now+control.id">
+          <select class="form-control" [formControlName]="control.id" [id]="now+control.id" autocomplete="on"
+                  [name]="control.id">
               <ng-container *ngIf="control.selectOptions && control.selectOptions.length"
               ></ng-container>
               <option *ngFor="let item of control.selectOptions" [value]="item.key">{{item.title}}</option>
