@@ -23,4 +23,28 @@
           </pre>
     </div>
   </div>
+  <div class="row">
+    <div class="col">
+      <h3 class="mt-5">Form with custom groups</h3>
+      <lib-ib-dynamic-forms [controlGroups]="controlGroups" #dynamicForms3 [config]="specificConfig"></lib-ib-dynamic-forms>
+      <button type="submit" class="btn btn-primary" (click)="dynamicForms3.getFormData()">Submit</button>
+    </div>
+    <div class="col pt-5">
+          <pre>
+            {{ dynamicForms3.form.value | json }}
+          </pre>
+    </div>
+  </div>
+  <div class="row">
+    <div class="col">
+      <h3 class="mt-5">Form with custom controls</h3>
+      <lib-ib-dynamic-forms [controlGroups]="controlGroups" #dynamicForms4 [config]="specificConfig2"></lib-ib-dynamic-forms>
+      <button type="submit" class="btn btn-primary" (click)="dynamicForms4.getFormData()">Submit</button>
+    </div>
+    <div class="col pt-5">
+          <pre>
+            {{ dynamicForms4.form.value | json }}
+          </pre>
+    </div>
+  </div>
 </div>

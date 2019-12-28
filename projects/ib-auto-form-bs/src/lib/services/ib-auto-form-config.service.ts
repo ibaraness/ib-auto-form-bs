@@ -1,20 +1,26 @@
-import {Injectable} from '@angular/core';
+import {Injectable, Type} from '@angular/core';
 import {dynamicControlAdapters} from "../config/dynamic-control-adapters.config";
-import {IbAutoFormConfig} from "../models/ib-auto-form";
+import {ControlAdaptersConfig, IbAutoFormGroup, IbFormGeneralConfig} from "../models/ib-auto-form";
 
-
+/**
+ * Global config for all forms.
+ */
 @Injectable()
-export class IbAutoFormConfigService {
+export class IbAutoFormConfigService implements IbFormGeneralConfig {
 
-  customGroupComponent: any;
+  /**
+   * Custom control group component to use
+   */
+  customGroupComponent: Type<IbAutoFormGroup>;
+  extendExistingControls: boolean;
 
-  private _config = dynamicControlAdapters;
+  private _controlAdaptersConfig = dynamicControlAdapters;
 
-  get config(): IbAutoFormConfig {
-    return this._config;
+  get controlAdaptersConfig(): ControlAdaptersConfig {
+    return this._controlAdaptersConfig;
   }
 
-  set config(config: IbAutoFormConfig) {
-    this._config = config;
+  set controlAdaptersConfig(config: ControlAdaptersConfig) {
+    this._controlAdaptersConfig = config;
   }
 }

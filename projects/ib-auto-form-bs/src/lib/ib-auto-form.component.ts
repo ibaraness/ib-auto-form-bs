@@ -1,6 +1,6 @@
 import {Component, EventEmitter, Input, OnInit, Output} from "@angular/core";
 import {FormControl, FormGroup} from "@angular/forms";
-import {FormValues, IbAutoFormControlGroup} from "./models/ib-auto-form";
+import {FormValues, IbAutoFormControlGroup, IbFormGeneralConfig} from "./models/ib-auto-form";
 import {getContrtolsFromGroups} from "./utils/utils";
 import {IbAutoFormValidationService} from "./services/ib-auto-form-validation.service";
 import {BehaviorSubject} from "rxjs";
@@ -19,12 +19,13 @@ import {BehaviorSubject} from "rxjs";
                         libIBDynamicControl
                         [submit$]="submit$"
                         [control]="control"
+                        [config]="config"
                         [form]="form">
           </ng-container>
       </ng-template>
 
       <ng-template #groupTemp let-group="group">
-          <lib-auto-form-group-factory [group]="group">
+          <lib-auto-form-group-factory [group]="group" [config]="config">
               <ng-container *ngTemplateOutlet="controlsTemp; context:{group: group}"></ng-container>
           </lib-auto-form-group-factory>
       </ng-template>
@@ -36,6 +37,7 @@ export class IbAutoFormComponent implements OnInit {
    */
   @Input() controlGroups: IbAutoFormControlGroup[];
   @Input() useGroups: boolean = true;
+  @Input() config: IbFormGeneralConfig;
   @Output() formReady: EventEmitter<FormGroup> = new EventEmitter();
   public submit$: BehaviorSubject<boolean> = new BehaviorSubject(null);
   public form: FormGroup;

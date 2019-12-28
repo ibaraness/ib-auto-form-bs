@@ -3,18 +3,19 @@ import {
   Component,
   ComponentFactoryResolver,
   Injector,
+  Input,
   TemplateRef,
   Type,
   ViewChild,
   ViewContainerRef
 } from "@angular/core";
-import {IbAutoFormGroup} from "../models/ib-auto-form";
+import {IbAutoFormGroup, IbFormGeneralConfig} from "../models/ib-auto-form";
 import {IbAutoFormConfigService} from "../services/ib-auto-form-config.service";
 
 @Component({
   selector: 'lib-auto-form-group-factory',
   template: `
-      <ng-container *ngIf="!configService.customGroupComponent && group">
+      <ng-container *ngIf="!customGroupComponent && group">
           <lib-auto-form-group [group]="group">
               <ng-container *ngTemplateOutlet="basicGroupTemp"></ng-container>
           </lib-auto-form-group>
@@ -26,6 +27,8 @@ import {IbAutoFormConfigService} from "../services/ib-auto-form-config.service";
 })
 export class IbAutoFormGroupFactoryComponent extends IbAutoFormGroup implements AfterContentInit {
   @ViewChild('basicGroupTemp') basicGroupTemp: TemplateRef<any>;
+  @Input() config: IbFormGeneralConfig;
+  customGroupComponent: Type<IbAutoFormGroup>;
 
   constructor(
     private injector: Injector,
@@ -44,11 +47,15 @@ export class IbAutoFormGroupFactoryComponent extends IbAutoFormGroup implements 
   }
 
   ngAfterContentInit(): void {
-    if (!this.configService.customGroupComponent) {
+    if (this.config && this.config.customGroupComponent) {
+      this.customGroupComponent = this.config.customGroupComponent;
+    } else if (this.configService && this.configService.customGroupComponent) {
+      this.customGroupComponent = this.configService.customGroupComponent;
+    } else {
       return;
     }
     setTimeout(() => {
-      const factory = this.componentFactory.resolveComponentFactory(this.configService.customGroupComponent as Type<IbAutoFormGroup>);
+      const factory = this.componentFactory.resolveComponentFactory(this.customGroupComponent);
       this.viewContainerRef.clear();
       const componentRef = this.viewContainerRef.createComponent(
         factory,

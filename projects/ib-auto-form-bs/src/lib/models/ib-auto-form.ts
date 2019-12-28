@@ -44,8 +44,14 @@ export interface IbAutoFormControlAdapter {
   validate(): void;
 }
 
-export interface IbAutoFormConfig {
+export interface ControlAdaptersConfig {
   [name: string]: Type<IbAutoFormControlAdapter>;
+}
+
+export interface IbFormGeneralConfig {
+  customGroupComponent?: Type<IbAutoFormGroup>;
+  controlAdaptersConfig?: ControlAdaptersConfig;
+  extendExistingControls?: boolean;
 }
 
 export interface IbAutoFormControlGroup {

@@ -11,12 +11,13 @@ export {
   ControlSimpleSelectOption,
   DynamicControlOptions,
   IbAutoFormControlAdapter,
-  IbAutoFormConfig,
+  ControlAdaptersConfig,
   IbAutoFormControlGroup,
   ValidationMap,
   FormValues,
   ControlValidationEvent,
   IbAutoFormGroup,
+  IbFormGeneralConfig
 } from "./lib/models/ib-auto-form";
 
 
