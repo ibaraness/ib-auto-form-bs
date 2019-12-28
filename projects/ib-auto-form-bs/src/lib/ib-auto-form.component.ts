@@ -1,4 +1,4 @@
-import {Component, EventEmitter, Input, OnInit, Output} from "@angular/core";
+import {Component, EventEmitter, Input, OnInit, Output, ViewEncapsulation} from "@angular/core";
 import {FormControl, FormGroup} from "@angular/forms";
 import {FormValues, IbAutoFormControlGroup, IbFormGeneralConfig} from "./models/ib-auto-form";
 import {getContrtolsFromGroups} from "./utils/utils";
@@ -29,7 +29,11 @@ import {BehaviorSubject} from "rxjs";
               <ng-container *ngTemplateOutlet="controlsTemp; context:{group: group}"></ng-container>
           </lib-auto-form-group-factory>
       </ng-template>
-  `
+  `,
+  styleUrls: [
+    './ib-auto-form.component.scss'
+  ],
+  encapsulation: ViewEncapsulation.None
 })
 export class IbAutoFormComponent implements OnInit {
   /**
