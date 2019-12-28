@@ -20,7 +20,7 @@ export class AppComponent implements OnInit {
         {
           id: "first_name",
           title: "First Name",
-          defaultValue: "Idan",
+          placeholder: "Please enter your first name",
           type: "textbox",
           validations: [
             {
@@ -40,6 +40,7 @@ export class AppComponent implements OnInit {
         {
           id: "last_name",
           title: "Last Name",
+          placeholder: "Please enter your last name",
           type: "textbox"
         },
         {
@@ -96,8 +97,14 @@ export class AppComponent implements OnInit {
         {
           id: "select",
           title: "Select plan",
-          type: "radio",
-          defaultValue: "20$",
+          type: "select",
+          placeholder: "Please select a plan",
+          validations: [
+            {
+              validation: "required",
+              errorMessage: "This field is required"
+            }
+          ],
           selectOptions: [
             {
               key: "10$",
@@ -153,7 +160,7 @@ export class AppComponent implements OnInit {
   submit() {
     if (this.dynamicForms) {
       const a = this.dynamicForms.getFormData();
-      console.log("submiting", a);
+      console.log("submiting", a, this.dynamicForms.form);
       return;
     }
   }
