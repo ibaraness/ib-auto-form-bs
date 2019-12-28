@@ -26,7 +26,7 @@ import {IbAutoFormConfigService} from "../services/ib-auto-form-config.service";
   `
 })
 export class IbAutoFormGroupFactoryComponent extends IbAutoFormGroup implements AfterContentInit {
-  @ViewChild('basicGroupTemp') basicGroupTemp: TemplateRef<any>;
+  @ViewChild('basicGroupTemp', { static: true }) basicGroupTemp: TemplateRef<any>;
   @Input() config: IbFormGeneralConfig;
   customGroupComponent: Type<IbAutoFormGroup>;
 

@@ -18,7 +18,7 @@ import {ControlValidationEvent, ControlValidatorDirective, DynamicControlOptions
   `
 })
 export class TextInputComponent implements IbAutoFormControlAdapter, OnInit {
-  @ViewChild(ControlValidatorDirective) controlValidator;
+  @ViewChild(ControlValidatorDirective, { static: false }) controlValidator;
   control: DynamicControlOptions;
   form: FormGroup;
   required: boolean;

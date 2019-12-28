@@ -32,7 +32,7 @@ export class ControlAdapterRadioComponent implements IbAutoFormControlAdapter {
   valid: boolean;
   errorMessage: string;
   now: number = +new Date();
-  @ViewChild(ControlValidatorDirective) controlValidator;
+  @ViewChild(ControlValidatorDirective, { static: false }) controlValidator;
 
   validate(): void {
     this.controlValidator.validate();

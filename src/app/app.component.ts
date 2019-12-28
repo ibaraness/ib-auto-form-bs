@@ -11,7 +11,7 @@ import {customDynamicControlAdapters} from "./custom_controls/custom-config";
 })
 export class AppComponent implements OnInit {
 
-  @ViewChild("dynamicForms") dynamicForms: IbAutoFormComponent;
+  @ViewChild("dynamicForms", { static: true }) dynamicForms: IbAutoFormComponent;
   public controlGroups: IbAutoFormControlGroup[] = [
     {
       title: 'Personal Details',

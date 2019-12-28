@@ -11,7 +11,7 @@ import {ControlValidatorDirective} from "../../../../directives/control-validato
 })
 export class ControlAdapterTextInputComponent
   implements IbAutoFormControlAdapter, OnInit {
-  @ViewChild(ControlValidatorDirective) controlValidator;
+  @ViewChild(ControlValidatorDirective, { static: false }) controlValidator;
   public form: FormGroup;
   public control: DynamicControlOptions;
   public invalid: boolean;

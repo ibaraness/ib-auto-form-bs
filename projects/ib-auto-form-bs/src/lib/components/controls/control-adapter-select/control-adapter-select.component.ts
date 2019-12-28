@@ -34,7 +34,7 @@ import {ControlValidatorDirective} from "../../../directives/control-validator/c
   encapsulation: ViewEncapsulation.None
 })
 export class ControlAdapterSelectComponent implements IbAutoFormControlAdapter, OnInit {
-  @ViewChild(ControlValidatorDirective) controlValidator;
+  @ViewChild(ControlValidatorDirective, { static: false }) controlValidator;
   control: DynamicControlOptions;
   form: FormGroup;
   dirty: boolean;
