@@ -1,4 +1,4 @@
-import {Component, ViewChild} from '@angular/core';
+import {Component, OnInit, ViewChild, ViewEncapsulation} from '@angular/core';
 import {ControlValidationEvent, DynamicControlOptions, IbAutoFormControlAdapter} from "../../../models/ib-auto-form";
 import {FormGroup} from "@angular/forms";
 import {ControlValidatorDirective} from "../../../directives/control-validator/control-validator.directive";
@@ -12,9 +12,16 @@ import {ControlValidatorDirective} from "../../../directives/control-validator/c
            (statusChange)="onStatusChange($event)"
            class="form-group">
 
-          <label [for]="now+control.id">{{control.title}}</label>
+          <label [for]="now+control.id" [ngClass]="{'required': required}">{{control.title}}</label>
 
-          <select class="form-control" [formControlName]="control.id" [id]="now+control.id" autocomplete="on"
+          <select class="form-control"
+                  [formControlName]="control.id"
+                  [ngClass]="{
+                    'is-invalid': !valid && dirty,
+                    'is-valid': valid
+                  }"
+                  [id]="now+control.id"
+                  autocomplete="on"
                   [name]="control.id">
               <ng-container *ngIf="control.selectOptions && control.selectOptions.length"
               ></ng-container>
@@ -23,17 +30,22 @@ import {ControlValidatorDirective} from "../../../directives/control-validator/c
 
           <div class="invalid-feedback">{{errorMessage}}</div>
       </div>
-  `
+  `,
+  encapsulation: ViewEncapsulation.None
 })
-export class ControlAdapterSelectComponent implements IbAutoFormControlAdapter {
-
+export class ControlAdapterSelectComponent implements IbAutoFormControlAdapter, OnInit {
+  @ViewChild(ControlValidatorDirective) controlValidator;
   control: DynamicControlOptions;
   form: FormGroup;
   dirty: boolean;
   valid: boolean;
   errorMessage: string;
   now: number = +new Date();
-  @ViewChild(ControlValidatorDirective) controlValidator;
+  required: boolean;
+
+  ngOnInit(): void {
+    this.required = this.control.validations && !!this.control.validations.find(valObj => valObj.validation === "required");
+  }
 
   validate(): void {
     this.controlValidator.validate();
