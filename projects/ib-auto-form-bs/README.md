@@ -4,11 +4,13 @@ This library was generated with [Angular CLI](https://github.com/angular/angular
 
 ## description
 This library basically let you create a dynamic form component using bootstrap from controls (Like registration etc.) <br/>
-Currently as it is, it supports 4 types of form controls:
+Currently as it is, it supports 6 types of form controls:
 * Text input (text, password, email etc.)
-* Select 
+* Select (Also multi select)
 * Radio
 * Checkbox
+* Textarea
+* File
 
 With that being said, it can support any type of control from any other package (Like Angular materials) using customization tools.
 Forms are being created using a JavaScript Object or a JSON file which contains instructions for the form builder. Different forms for different users can be created on the fly.
@@ -45,7 +47,7 @@ controlGroups = [
             {
                 id: 'firstname',
                 title: 'First Name',
-                type: 'textbox'
+                type: 'text'
             }   
         ]       
     }
@@ -59,7 +61,7 @@ Lets split apart the different parts so we can understand better, from inside to
 {
     id: 'firstname',
     title: 'First Name',
-    type: 'textbox'
+    type: 'text'
 }   
 ```
 The above code, as you can imaging, represents a control type, in our case a text input. You can read farther about other properties control can have like validation etc. 
@@ -71,13 +73,13 @@ controls: [
     { 
         id: 'firstname',
         title: 'First Name',
-        type: 'textbox'
+        type: 'text'
     },
     // Second control
     { 
         id: 'lastname',
         title: 'Last Name',
-        type: 'textbox'
+        type: 'text'
     }    
     ...
 ]   
@@ -94,7 +96,7 @@ controlGroups = [
             {
                 id: 'firstname',
                 title: 'First Name',
-                type: 'textbox'
+                type: 'text'
             }   
         ]       
     }

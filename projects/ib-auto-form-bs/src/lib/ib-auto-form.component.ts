@@ -61,6 +61,9 @@ export class IbAutoFormComponent implements OnInit {
         control.validations.map(obj => this.validationService.getValidator(obj.validation))
           .filter(v => v);
       controlsObj[control.id] = new FormControl(control.defaultValue, validators);
+      if (control.disabled) {
+        (controlsObj[control.id] as FormControl).disable();
+      }
     });
     this.form = new FormGroup(controlsObj);
     this.formReady.emit(this.form);

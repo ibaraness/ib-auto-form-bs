@@ -12,13 +12,15 @@ export interface Validation {
 }
 
 export enum controlType {
-  TEXT_INPUT = 'textbox',
+  TEXT_INPUT = 'text',
   CHECKBOX = 'checkbox',
   SELECT = 'select',
-  RADIO = 'radio'
+  RADIO = 'radio',
+  TEXTAREA = 'textarea',
+  FILE = 'file'
 }
 
-export interface ControlSimpleSelectOption {
+export interface ControlSimpleItem {
   key: string | number;
   title: string;
 }
@@ -31,11 +33,14 @@ export interface DynamicControlOptions {
   type: string;
   tags?: string[];
   options?: { [optionName: string]: string };
+  disabled?: boolean;
   data?: any;
-  selectOptions?: ControlSimpleSelectOption[];
+  items?: ControlSimpleItem[];
   validations?: Validation[];
   className?: string;
   placeholder?: string;
+  multipleSelect?: boolean;
+  rows?: number;
 }
 
 export interface IbAutoFormControlAdapter {

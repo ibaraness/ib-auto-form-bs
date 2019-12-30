@@ -21,14 +21,14 @@ export class AppComponent implements OnInit {
           id: "first_name",
           title: "First Name",
           placeholder: "Please enter your first name",
-          type: "textbox",
+          type: "text",
           validations: [
             {
               validation: "required",
               errorMessage: "This field is required"
             },
             {
-              validation: "minlength-3",
+              validation: "minlength-2",
               errorMessage: "You must enter at least 3 letters"
             },
             {
@@ -41,12 +41,12 @@ export class AppComponent implements OnInit {
           id: "last_name",
           title: "Last Name",
           placeholder: "Please enter your last name",
-          type: "textbox"
+          type: "text"
         },
         {
           id: "email",
           title: "Email",
-          type: "textbox",
+          type: "text",
           options: {
             input_type: "email"
           },
@@ -64,7 +64,7 @@ export class AppComponent implements OnInit {
         {
           id: "password",
           title: "Password",
-          type: "textbox",
+          type: "text",
           options: {
             input_type: "password"
           },
@@ -105,7 +105,8 @@ export class AppComponent implements OnInit {
               errorMessage: "This field is required"
             }
           ],
-          selectOptions: [
+          multipleSelect: true,
+          items: [
             {
               key: "10$",
               title: "First plan"
@@ -119,7 +120,14 @@ export class AppComponent implements OnInit {
               title: "Third plan"
             }
           ]
-        }
+        },
+        {
+          id: 'message',
+          type: 'textarea',
+          title: 'Message',
+          rows: 5,
+          defaultValue: 'Text123'
+        },
       ]
     },
     {
@@ -127,14 +135,34 @@ export class AppComponent implements OnInit {
       controls: [
         {
           id: 'group2-input',
-          type: 'textbox',
+          type: 'text',
           title: 'Group2 Input',
           defaultValue: 'Text123'
         },
         {
           id: 'group2-input2',
-          type: 'textbox',
+          type: 'text',
           title: 'Group2 Input2',
+        },
+        {
+          id: 'cbox',
+          type: 'checkbox',
+          title: 'Required checkbox',
+          validations: [
+            {
+              validation: "required",
+              errorMessage: "This field is required"
+            },
+            {
+              validation: "requiredTrue",
+              errorMessage: "You must check to continue"
+            }
+          ],
+        },
+        {
+          id: 'file',
+          type: 'file',
+          title: 'Please upload a text file',
         }
       ]
     }

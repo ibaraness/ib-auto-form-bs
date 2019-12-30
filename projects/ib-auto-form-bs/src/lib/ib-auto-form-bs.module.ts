@@ -1,9 +1,5 @@
 import {ModuleWithProviders, NgModule} from "@angular/core";
 import {IbAutoFormComponent} from "./ib-auto-form.component";
-import {ControlTextInputComponent} from "./components/controls/control-text-input/control-text-input.component";
-import {
-  ControlAdapterTextInputComponent
-} from "./components/controls/control-text-input/control-adapter-text-input/control-adapter-text-input.component";
 import {DynamicControlDirective} from "./directives/dynamic-control/dynamic-control.directive";
 import {ControlValidatorDirective} from "./directives/control-validator/control-validator.directive";
 import {CommonModule} from "@angular/common";
@@ -15,12 +11,13 @@ import {ControlAdapterSelectComponent} from './components/controls/control-adapt
 import {ControlAdapterRadioComponent} from './components/controls/control-adapter-radio/control-adapter-radio.component';
 import {IbAutoFormGroupComponent} from "./components/ib-auto-form-group.component";
 import {IbAutoFormGroupFactoryComponent} from "./components/ib-auto-form-group-factory.component";
+import {ControlAdapterTextareaComponent} from "./components/controls/control-adapter-textarea/control-adapter-textarea.component";
+import {ControlAdapterFileComponent} from "./components/controls/control-adpter-file/control-adapter-file.component";
+import {ControlAdapterTextInputComponent} from "./components/controls/control-adapter-textinput/control-adapter-text-input.component";
 
 @NgModule({
   declarations: [
     IbAutoFormComponent,
-    ControlTextInputComponent,
-    ControlAdapterTextInputComponent,
     DynamicControlDirective,
     ControlValidatorDirective,
     ControlAdapterCheckboxComponent,
@@ -28,11 +25,12 @@ import {IbAutoFormGroupFactoryComponent} from "./components/ib-auto-form-group-f
     ControlAdapterRadioComponent,
     IbAutoFormGroupComponent,
     IbAutoFormGroupFactoryComponent,
+    ControlAdapterTextareaComponent,
+    ControlAdapterFileComponent,
+    ControlAdapterTextInputComponent
   ],
   exports: [
     IbAutoFormComponent,
-    ControlTextInputComponent,
-    ControlAdapterTextInputComponent,
     ControlAdapterCheckboxComponent,
     DynamicControlDirective,
     ControlValidatorDirective,
@@ -40,12 +38,17 @@ import {IbAutoFormGroupFactoryComponent} from "./components/ib-auto-form-group-f
     ControlAdapterRadioComponent,
     IbAutoFormGroupComponent,
     IbAutoFormGroupFactoryComponent,
+    ControlAdapterTextareaComponent,
+    ControlAdapterFileComponent,
+    ControlAdapterTextInputComponent
   ],
   entryComponents: [
-    ControlAdapterTextInputComponent,
     ControlAdapterCheckboxComponent,
     ControlAdapterSelectComponent,
     ControlAdapterRadioComponent,
+    ControlAdapterTextareaComponent,
+    ControlAdapterFileComponent,
+    ControlAdapterTextInputComponent
   ],
   imports: [CommonModule, ReactiveFormsModule, FormsModule],
 })
