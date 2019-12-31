@@ -14,6 +14,8 @@ import {IbAutoFormGroupFactoryComponent} from "./components/ib-auto-form-group-f
 import {ControlAdapterTextareaComponent} from "./components/controls/control-adapter-textarea/control-adapter-textarea.component";
 import {ControlAdapterFileComponent} from "./components/controls/control-adpter-file/control-adapter-file.component";
 import {ControlAdapterTextInputComponent} from "./components/controls/control-adapter-textinput/control-adapter-text-input.component";
+import {ControlAdapterDatepickerComponent} from "./components/controls/control-adapter-datepicker/control-adapter-datepicker.component";
+import { AngularMyDatePickerModule } from 'angular-mydatepicker';
 
 @NgModule({
   declarations: [
@@ -27,7 +29,8 @@ import {ControlAdapterTextInputComponent} from "./components/controls/control-ad
     IbAutoFormGroupFactoryComponent,
     ControlAdapterTextareaComponent,
     ControlAdapterFileComponent,
-    ControlAdapterTextInputComponent
+    ControlAdapterTextInputComponent,
+    ControlAdapterDatepickerComponent
   ],
   exports: [
     IbAutoFormComponent,
@@ -40,7 +43,8 @@ import {ControlAdapterTextInputComponent} from "./components/controls/control-ad
     IbAutoFormGroupFactoryComponent,
     ControlAdapterTextareaComponent,
     ControlAdapterFileComponent,
-    ControlAdapterTextInputComponent
+    ControlAdapterTextInputComponent,
+    ControlAdapterDatepickerComponent
   ],
   entryComponents: [
     ControlAdapterCheckboxComponent,
@@ -48,9 +52,10 @@ import {ControlAdapterTextInputComponent} from "./components/controls/control-ad
     ControlAdapterRadioComponent,
     ControlAdapterTextareaComponent,
     ControlAdapterFileComponent,
-    ControlAdapterTextInputComponent
+    ControlAdapterTextInputComponent,
+    ControlAdapterDatepickerComponent
   ],
-  imports: [CommonModule, ReactiveFormsModule, FormsModule],
+  imports: [CommonModule, ReactiveFormsModule, FormsModule, AngularMyDatePickerModule],
 })
 export class IbAutoFormBsModule {
   static forRoot(): ModuleWithProviders {

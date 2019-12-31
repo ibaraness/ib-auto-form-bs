@@ -17,7 +17,8 @@ export enum controlType {
   SELECT = 'select',
   RADIO = 'radio',
   TEXTAREA = 'textarea',
-  FILE = 'file'
+  FILE = 'file',
+  DATE_PICKER = 'datepicker'
 }
 
 export interface ControlSimpleItem {

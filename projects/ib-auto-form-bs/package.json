@@ -1,9 +1,13 @@
 {
   "name": "ib-auto-form-bs",
   "version": "0.0.1",
+  "dependencies": {
+    "angular-mydatepicker": "^0.3.4"
+  },
   "peerDependencies": {
     "@angular/common": "^7.2.0",
     "@angular/core": "^7.2.0",
-    "lodash": "^4.17.11"
+    "lodash": "^4.17.11",
+    "@fortawesome/fontawesome-free": "^5.12.0"
   }
 }

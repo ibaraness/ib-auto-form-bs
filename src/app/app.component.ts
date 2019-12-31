@@ -62,6 +62,11 @@ export class AppComponent implements OnInit {
           ]
         },
         {
+          id: 'date',
+          type: 'datepicker',
+          title: 'Birthday',
+        },
+        {
           id: "password",
           title: "Password",
           type: "text",

@@ -4,7 +4,11 @@
   "lib": {
     "entryFile": "src/public_api.ts",
     "umdModuleIds": {
-      "lodash": "_"
+      "lodash": "_",
+      "angular-mydatepicker": "AngularMyDatePickerModule"
     }
-  }
+  },
+  "whitelistedNonPeerDependencies": [
+    "."
+  ]
 }

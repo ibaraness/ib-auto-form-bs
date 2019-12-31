@@ -5,6 +5,7 @@ import {ControlAdapterRadioComponent} from "../components/controls/control-adapt
 import {ControlAdapterTextareaComponent} from "../components/controls/control-adapter-textarea/control-adapter-textarea.component";
 import {ControlAdapterFileComponent} from "../components/controls/control-adpter-file/control-adapter-file.component";
 import {ControlAdapterTextInputComponent} from "../components/controls/control-adapter-textinput/control-adapter-text-input.component";
+import {ControlAdapterDatepickerComponent} from "../components/controls/control-adapter-datepicker/control-adapter-datepicker.component";
 
 
 export const dynamicControlAdapters: ControlAdaptersConfig = {
@@ -13,5 +14,6 @@ export const dynamicControlAdapters: ControlAdaptersConfig = {
   [controlType.SELECT]: ControlAdapterSelectComponent,
   [controlType.RADIO]: ControlAdapterRadioComponent,
   [controlType.TEXTAREA]: ControlAdapterTextareaComponent,
-  [controlType.FILE]: ControlAdapterFileComponent
+  [controlType.FILE]: ControlAdapterFileComponent,
+  [controlType.DATE_PICKER]: ControlAdapterDatepickerComponent
 };
