@@ -33,7 +33,7 @@ export interface DynamicControlOptions {
   defaultValue?: any;
   type: string;
   tags?: string[];
-  options?: { [optionName: string]: string };
+  options?: { [optionName: string]: any };
   disabled?: boolean;
   data?: any;
   items?: ControlSimpleItem[];
