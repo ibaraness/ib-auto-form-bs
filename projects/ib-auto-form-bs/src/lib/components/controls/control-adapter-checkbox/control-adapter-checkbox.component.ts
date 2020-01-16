@@ -1,15 +1,11 @@
-import {Component, OnInit, ViewChild, ViewEncapsulation} from '@angular/core';
-import {ControlValidationEvent, DynamicControlOptions, IbAutoFormControlAdapter} from "../../../models/ib-auto-form";
-import {FormGroup} from "@angular/forms";
-import {ControlValidatorDirective} from "../../../directives/control-validator/control-validator.directive";
+import {Component, ViewEncapsulation} from '@angular/core';
+import {BasicControlAdapterComponent} from "../basic-control-adapter.component";
 
 @Component({
   selector: 'lib-control-adapter-checkbox',
   template: `
       <div *ngIf="form"
-           [formGroup]="form" libIBControlValidator
-           [form]="form" [control]="control"
-           (statusChange)="onStatusChange($event)"
+           [formGroup]="form"
            class="form-group form-check">
           <input type="checkbox"
                  [ngClass]="{
@@ -28,28 +24,6 @@ import {ControlValidatorDirective} from "../../../directives/control-validator/c
   `,
   encapsulation: ViewEncapsulation.None
 })
-export class ControlAdapterCheckboxComponent implements IbAutoFormControlAdapter, OnInit {
-  control: DynamicControlOptions;
-  form: FormGroup;
-  dirty: boolean;
-  required: boolean;
-  valid: boolean;
-  errorMessage: string;
-  now: number = +new Date();
-  @ViewChild(ControlValidatorDirective, {static: false}) controlValidator;
-
-  validate(): void {
-    this.controlValidator.validate();
-  }
-
-  onStatusChange(event: ControlValidationEvent) {
-    this.dirty = true;
-    this.errorMessage = event.errorMessage;
-    this.valid = !event.error;
-  }
-
-  ngOnInit(): void {
-    this.required = this.control.validations && !!this.control.validations.find(valObj => valObj.validation === "required");
-  }
+export class ControlAdapterCheckboxComponent extends BasicControlAdapterComponent {
 
 }

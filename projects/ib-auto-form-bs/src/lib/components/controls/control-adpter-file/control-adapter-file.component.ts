@@ -1,15 +1,11 @@
-import {Component, OnInit, ViewChild, ViewEncapsulation} from "@angular/core";
-import {ControlValidatorDirective} from "../../../directives/control-validator/control-validator.directive";
-import {ControlValidationEvent, DynamicControlOptions} from "../../../models/ib-auto-form";
-import {FormGroup} from "@angular/forms";
+import {Component, ViewEncapsulation} from "@angular/core";
+import {BasicControlAdapterComponent} from "../basic-control-adapter.component";
 
 @Component({
   selector: 'lib-control-adapter-file',
   template: `
       <div *ngIf="form"
-           [formGroup]="form" libIBControlValidator
-           [form]="form" [control]="control"
-           (statusChange)="onStatusChange($event)"
+           [formGroup]="form"
            class="form-group">
           <label [for]="now+control.id" [ngClass]="{'required': required}">{{control.title}}</label>
           <input type="file"
@@ -27,27 +23,6 @@ import {FormGroup} from "@angular/forms";
   `,
   encapsulation: ViewEncapsulation.None
 })
-export class ControlAdapterFileComponent implements OnInit{
-  @ViewChild(ControlValidatorDirective, {static: false}) controlValidator;
-  control: DynamicControlOptions;
-  form: FormGroup;
-  dirty: boolean;
-  valid: boolean;
-  errorMessage: string;
-  now: number = +new Date();
-  required: boolean;
+export class ControlAdapterFileComponent extends BasicControlAdapterComponent {
 
-  ngOnInit(): void {
-    this.required = this.control.validations && !!this.control.validations.find(valObj => valObj.validation === "required");
-  }
-
-  validate(): void {
-    this.controlValidator.validate();
-  }
-
-  onStatusChange(event: ControlValidationEvent) {
-    this.dirty = true;
-    this.errorMessage = event.errorMessage;
-    this.valid = !event.error;
-  }
 }

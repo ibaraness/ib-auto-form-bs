@@ -1,15 +1,13 @@
 import {Component, OnInit, ViewChild} from "@angular/core";
 import {FormGroup} from "@angular/forms";
-import {ControlValidationEvent, ControlValidatorDirective, DynamicControlOptions, IbAutoFormControlAdapter} from "ib-auto-form-bs";
+import {DynamicControlOptions, IbAutoFormControlAdapter} from "ib-auto-form-bs";
 
 
 @Component({
   selector: 'app-text-input',
   template: `
       <div *ngIf="form"
-           [formGroup]="form" libIBControlValidator
-           (statusChange)="onStatusChange($event)"
-           [form]="form" [control]="control">
+           [formGroup]="form" >
           <label [for]="control.id">{{control?.title + (required ? '*' : '')}} </label>
           <input type="text" [formControlName]="control.id" [name]="control.id" [id]="control.id" (blur)="validate()" autocomplete="on">
           <div>{{errorMessage}}</div>
@@ -18,7 +16,6 @@ import {ControlValidationEvent, ControlValidatorDirective, DynamicControlOptions
   `
 })
 export class TextInputComponent implements IbAutoFormControlAdapter, OnInit {
-  @ViewChild(ControlValidatorDirective, { static: false }) controlValidator;
   control: DynamicControlOptions;
   form: FormGroup;
   required: boolean;
@@ -31,13 +28,6 @@ export class TextInputComponent implements IbAutoFormControlAdapter, OnInit {
   }
 
   validate(): void {
-    this.controlValidator.validate();
-  }
-
-  onStatusChange(event: ControlValidationEvent) {
-    this.dirty = true;
-    this.errorMessage = event.errorMessage;
-    this.valid = !event.error;
   }
 
 }

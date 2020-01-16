@@ -1,16 +1,12 @@
-import {Component, OnInit, ViewChild} from "@angular/core";
+import {Component, OnInit} from "@angular/core";
 import {IAngularMyDpOptions, IMyDateModel} from "angular-mydatepicker";
-import {ControlValidationEvent, DynamicControlOptions, IbAutoFormControlAdapter} from "../../../models/ib-auto-form";
-import {FormGroup} from "@angular/forms";
-import {ControlValidatorDirective} from "../../../directives/control-validator/control-validator.directive";
+import {BasicControlAdapterComponent} from "../basic-control-adapter.component";
 
 @Component({
   selector: 'lib-control-adapter-datepicker',
   template: `
       <div *ngIf="form"
-           [formGroup]="form" libIBControlValidator
-           [form]="form" [control]="control"
-           (statusChange)="onStatusChange($event)"
+           [formGroup]="form"
            class="form-group">
 
           <label [for]="now+control.id" [ngClass]="{'required': required}">{{control.title}}</label>
@@ -40,20 +36,12 @@ import {ControlValidatorDirective} from "../../../directives/control-validator/c
       </div>
   `
 })
-export class ControlAdapterDatepickerComponent implements IbAutoFormControlAdapter, OnInit {
-  @ViewChild(ControlValidatorDirective, {static: false}) controlValidator;
+export class ControlAdapterDatepickerComponent extends BasicControlAdapterComponent implements OnInit {
   myOptions: IAngularMyDpOptions = {
     dateRange: false,
     dateFormat: 'dd.mm.yyyy'
     // other options...
   };
-  control: DynamicControlOptions;
-  form: FormGroup;
-  dirty: boolean;
-  valid: boolean;
-  errorMessage: string;
-  now: number = +new Date();
-  required: boolean;
 
   currentValue: string = '';
 
@@ -62,7 +50,6 @@ export class ControlAdapterDatepickerComponent implements IbAutoFormControlAdapt
   }
 
   ngOnInit(): void {
-    this.required = this.control.validations && !!this.control.validations.find(valObj => valObj.validation === "required");
     const options = this.control.options;
 
     // TODO: check if datePickerOptions is IAngularMyDpOptions type
@@ -71,13 +58,4 @@ export class ControlAdapterDatepickerComponent implements IbAutoFormControlAdapt
     }
   }
 
-  validate(): void {
-    this.controlValidator.validate();
-  }
-
-  onStatusChange(event: ControlValidationEvent) {
-    this.dirty = true;
-    this.errorMessage = event.errorMessage;
-    this.valid = !event.error;
-  }
 }

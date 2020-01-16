@@ -25,6 +25,5 @@ export {
 
 export {IbAutoFormComponent} from "./lib/ib-auto-form.component";
 export {DynamicControlDirective} from "./lib/directives/dynamic-control/dynamic-control.directive";
-export {ControlValidatorDirective} from "./lib/directives/control-validator/control-validator.directive";
 export {IbAutoFormBsModule} from "./lib/ib-auto-form-bs.module";
 export {CustomValueAccessorDirective} from './lib/directives/custom-value-accessor/custom-value-accessor.directive';

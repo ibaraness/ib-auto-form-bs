@@ -1,7 +1,6 @@
 import {ModuleWithProviders, NgModule} from "@angular/core";
 import {IbAutoFormComponent} from "./ib-auto-form.component";
 import {DynamicControlDirective} from "./directives/dynamic-control/dynamic-control.directive";
-import {ControlValidatorDirective} from "./directives/control-validator/control-validator.directive";
 import {CommonModule} from "@angular/common";
 import {FormsModule, ReactiveFormsModule} from "@angular/forms";
 import {IbAutoFormValidationService} from "./services/ib-auto-form-validation.service";
@@ -15,14 +14,15 @@ import {ControlAdapterTextareaComponent} from "./components/controls/control-ada
 import {ControlAdapterFileComponent} from "./components/controls/control-adpter-file/control-adapter-file.component";
 import {ControlAdapterTextInputComponent} from "./components/controls/control-adapter-textinput/control-adapter-text-input.component";
 import {ControlAdapterDatepickerComponent} from "./components/controls/control-adapter-datepicker/control-adapter-datepicker.component";
-import { AngularMyDatePickerModule } from 'angular-mydatepicker';
+import {AngularMyDatePickerModule} from 'angular-mydatepicker';
 import {CustomValueAccessorDirective} from "./directives/custom-value-accessor/custom-value-accessor.directive";
+import {BasicControlAdapterComponent} from "./components/controls/basic-control-adapter.component";
 
 @NgModule({
   declarations: [
     IbAutoFormComponent,
     DynamicControlDirective,
-    ControlValidatorDirective,
+    BasicControlAdapterComponent,
     ControlAdapterCheckboxComponent,
     ControlAdapterSelectComponent,
     ControlAdapterRadioComponent,
@@ -38,7 +38,6 @@ import {CustomValueAccessorDirective} from "./directives/custom-value-accessor/c
     IbAutoFormComponent,
     ControlAdapterCheckboxComponent,
     DynamicControlDirective,
-    ControlValidatorDirective,
     ControlAdapterSelectComponent,
     ControlAdapterRadioComponent,
     IbAutoFormGroupComponent,

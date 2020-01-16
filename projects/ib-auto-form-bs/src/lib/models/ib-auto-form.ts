@@ -47,7 +47,6 @@ export interface DynamicControlOptions {
 export interface IbAutoFormControlAdapter {
   control: DynamicControlOptions;
   form: FormGroup;
-
   validate(): void;
 }
 
