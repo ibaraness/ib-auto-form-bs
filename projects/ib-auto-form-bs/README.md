@@ -34,7 +34,7 @@ export class AppModule { }
 ``` 
 Second, add **IbAutoFormComponent** to your component template:
 ```ignorelang
-<lib-ib-dynamic-forms [controlGroups]="controlGroups"></lib-ib-dynamic-forms>
+<ib-dynamic-forms [controlGroups]="controlGroups"></ib-dynamic-forms>
 ```
 
 As you can see, we assigned 'controlGroups' property to IbAutoFormComponent 'controlGroups' input. ControlGroups is a list of instructions to create our form.
