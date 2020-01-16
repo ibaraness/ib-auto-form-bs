@@ -2,7 +2,7 @@ import {Component, ViewEncapsulation} from '@angular/core';
 import {BasicControlAdapterComponent} from "../basic-control-adapter.component";
 
 @Component({
-  selector: 'lib-control-adapter-select',
+  selector: 'ib-control-adapter-select',
   template: `
       <div *ngIf="form"
            [formGroup]="form"

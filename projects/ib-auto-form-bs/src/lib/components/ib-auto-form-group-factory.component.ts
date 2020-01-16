@@ -13,12 +13,12 @@ import {IbAutoFormGroup, IbFormGeneralConfig} from "../models/ib-auto-form";
 import {IbAutoFormConfigService} from "../services/ib-auto-form-config.service";
 
 @Component({
-  selector: 'lib-auto-form-group-factory',
+  selector: 'ib-auto-form-group-factory',
   template: `
       <ng-container *ngIf="!customGroupComponent && group">
-          <lib-auto-form-group [group]="group">
+          <ib-auto-form-group [group]="group">
               <ng-container *ngTemplateOutlet="basicGroupTemp"></ng-container>
-          </lib-auto-form-group>
+          </ib-auto-form-group>
       </ng-container>
       <ng-template #basicGroupTemp>
           <ng-content></ng-content>

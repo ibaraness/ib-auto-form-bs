@@ -4,7 +4,7 @@ import * as _ from "lodash";
 import {BasicControlAdapterComponent} from "../basic-control-adapter.component";
 
 @Component({
-  selector: "lib-ib-control-adapter-text-input2",
+  selector: "ib-control-adapter-text-input2",
   template: `
       <div *ngIf="form"
            class="form-group"

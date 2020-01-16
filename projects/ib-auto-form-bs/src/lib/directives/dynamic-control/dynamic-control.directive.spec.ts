@@ -5,9 +5,9 @@ import { DynamicControlOptions } from "../../models/ib-auto-form";
 import { IbAutoFormValidationService } from "../../services/ib-auto-form-validation.service";
 
 @Component({
-  selector: "app-container",
+  selector: "ib-container",
   template:
-    "<div id='container' [form]='form' [control]='control' libIBDynamicControl></div>"
+    "<div id='container' [form]='form' [control]='control' ibDynamicControl></div>"
 })
 export class ConatinerComponent {
   public form: FormGroup;

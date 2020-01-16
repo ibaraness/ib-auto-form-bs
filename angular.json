@@ -127,7 +127,7 @@
       "root": "projects/ib-auto-form-bs",
       "sourceRoot": "projects/ib-auto-form-bs/src",
       "projectType": "library",
-      "prefix": "lib",
+      "prefix": "ib",
       "architect": {
         "build": {
           "builder": "@angular-devkit/build-ng-packagr:build",

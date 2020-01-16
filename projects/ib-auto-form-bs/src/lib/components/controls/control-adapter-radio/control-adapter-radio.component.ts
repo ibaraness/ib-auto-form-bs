@@ -2,7 +2,7 @@ import {Component, ViewEncapsulation} from '@angular/core';
 import {BasicControlAdapterComponent} from "../basic-control-adapter.component";
 
 @Component({
-  selector: 'lib-control-adapter-radio',
+  selector: 'ib-control-adapter-radio',
   template: `
       <div *ngIf="form"
            [formGroup]="form"

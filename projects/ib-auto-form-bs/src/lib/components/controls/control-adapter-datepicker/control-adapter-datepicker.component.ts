@@ -3,14 +3,14 @@ import {IAngularMyDpOptions, IMyDateModel} from "angular-mydatepicker";
 import {BasicControlAdapterComponent} from "../basic-control-adapter.component";
 
 @Component({
-  selector: 'lib-control-adapter-datepicker',
+  selector: 'ib-control-adapter-datepicker',
   template: `
       <div *ngIf="form"
            [formGroup]="form"
            class="form-group">
 
           <label [for]="now+control.id" [ngClass]="{'required': required}">{{control.title}}</label>
-          <div class="input-group" [formControlName]="control.id" [(libIbCustomValueAccessor)]="currentValue">
+          <div class="input-group" [formControlName]="control.id" [(ibCustomValueAccessor)]="currentValue">
               <input class="form-control"
                      (dateChanged)="handleDateChange($event)"
                      type="text"

@@ -7,7 +7,7 @@ import {IbAutoFormConfigService} from "../../services/ib-auto-form-config.servic
 import {dynamicControlAdapters} from "../../config/dynamic-control-adapters.config";
 
 @Directive({
-  selector: "[libIBDynamicControl]"
+  selector: "[ibDynamicControl]"
 })
 export class DynamicControlDirective implements OnInit {
   @Input() form: FormGroup;

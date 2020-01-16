@@ -3,7 +3,7 @@ import {ControlValueAccessor, NG_VALUE_ACCESSOR} from "@angular/forms";
 
 
 @Directive({
-  selector: '[libIbCustomValueAccessor]',
+  selector: '[ibCustomValueAccessor]',
   providers: [
     {
       provide: NG_VALUE_ACCESSOR,
@@ -18,14 +18,14 @@ export class CustomValueAccessorDirective implements ControlValueAccessor, OnDes
   /**
    * Create a banana in a box mechanism for the control value
    */
-  @Output() libIbCustomValueAccessorChange: EventEmitter<any> = new EventEmitter<any>();
+  @Output() ibCustomValueAccessorChange: EventEmitter<any> = new EventEmitter<any>();
   private currentValue: any;
 
   /**
    * Each setting for the input triggers the onChange ControlValueAccessor function
    * @param value
    */
-  @Input() set libIbCustomValueAccessor(value: any) {
+  @Input() set ibCustomValueAccessor(value: any) {
     setTimeout(() => {
       this.onChange(value);
     });
@@ -58,7 +58,7 @@ export class CustomValueAccessorDirective implements ControlValueAccessor, OnDes
   writeValue(obj: any): void {
     this.currentValue = obj;
     setTimeout(() => {
-      this.libIbCustomValueAccessorChange.emit(obj);
+      this.ibCustomValueAccessorChange.emit(obj);
     });
   }
 

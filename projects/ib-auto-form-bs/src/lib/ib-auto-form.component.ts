@@ -6,7 +6,7 @@ import {IbAutoFormValidationService} from "./services/ib-auto-form-validation.se
 import {BehaviorSubject} from "rxjs";
 
 @Component({
-  selector: "lib-ib-dynamic-forms",
+  selector: "ib-dynamic-forms",
   template: `
       <form *ngIf="form && controlGroups" [formGroup]="form">
           <ng-container *ngFor="let group of controlGroups">
@@ -16,7 +16,7 @@ import {BehaviorSubject} from "rxjs";
 
       <ng-template #controlsTemp let-group="group">
           <ng-container *ngFor="let control of group.controls"
-                        libIBDynamicControl
+                        ibDynamicControl
                         [submit$]="submit$"
                         [control]="control"
                         [config]="config"
@@ -25,9 +25,9 @@ import {BehaviorSubject} from "rxjs";
       </ng-template>
 
       <ng-template #groupTemp let-group="group">
-          <lib-auto-form-group-factory [group]="group" [config]="config">
+          <ib-auto-form-group-factory [group]="group" [config]="config">
               <ng-container *ngTemplateOutlet="controlsTemp; context:{group: group}"></ng-container>
-          </lib-auto-form-group-factory>
+          </ib-auto-form-group-factory>
       </ng-template>
   `,
   styleUrls: [

@@ -106,5 +106,5 @@ controlGroups = [
 As with controls, custom groups control component can be added instead of the proposed one. control groups can be omitted, so only the controls will be displayed, by setting 'useGroups' to false
  
 ```angular2html
-<lib-ib-dynamic-forms [controlGroups]="controlGroups" [useGroups]="false"></lib-ib-dynamic-forms>
+<ib-dynamic-forms [controlGroups]="controlGroups" [useGroups]="false"></ib-dynamic-forms>
 ```
