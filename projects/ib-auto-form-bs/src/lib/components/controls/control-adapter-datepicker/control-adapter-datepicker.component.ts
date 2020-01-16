@@ -14,14 +14,15 @@ import {ControlValidatorDirective} from "../../../directives/control-validator/c
            class="form-group">
 
           <label [for]="now+control.id" [ngClass]="{'required': required}">{{control.title}}</label>
-          <div class="input-group">
+          <div class="input-group" [formControlName]="control.id" [(libIbCustomValueAccessor)]="currentValue">
               <input class="form-control"
+                     (dateChanged)="handleDateChange($event)"
                      type="text"
                      [attr.placeholder]="control.placeholder"
                      angular-mydatepicker
                      [name]="control.id"
-                     [formControlName]="control.id"
                      [options]="myOptions"
+                     [value]="currentValue"
                      [ngClass]="{
                     'is-invalid': !valid && dirty,
                     'is-valid': !valid && dirty
@@ -40,13 +41,12 @@ import {ControlValidatorDirective} from "../../../directives/control-validator/c
   `
 })
 export class ControlAdapterDatepickerComponent implements IbAutoFormControlAdapter, OnInit {
-  @ViewChild(ControlValidatorDirective, { static: false }) controlValidator;
+  @ViewChild(ControlValidatorDirective, {static: false}) controlValidator;
   myOptions: IAngularMyDpOptions = {
     dateRange: false,
     dateFormat: 'dd.mm.yyyy'
     // other options...
   };
-
   control: DynamicControlOptions;
   form: FormGroup;
   dirty: boolean;
@@ -55,21 +55,20 @@ export class ControlAdapterDatepickerComponent implements IbAutoFormControlAdapt
   now: number = +new Date();
   required: boolean;
 
+  currentValue: string = '';
+
+  handleDateChange(date: IMyDateModel): void {
+    this.currentValue = date.singleDate.formatted;
+  }
+
   ngOnInit(): void {
-    // Initialize to today date
-    // let model: IMyDateModel = {isRange: false, singleDate: {jsDate: new Date()}, dateRange: null};
     this.required = this.control.validations && !!this.control.validations.find(valObj => valObj.validation === "required");
-  }
+    const options = this.control.options;
 
-  setDate(): void {
-    // Set today date using the patchValue function
-    const model: IMyDateModel = {isRange: false, singleDate: {jsDate: new Date()}, dateRange: null};
-    this.form.patchValue({myDate: model});
-  }
-
-  clearDate(): void {
-    // Clear the date using the patchValue function
-    this.form.patchValue({myDate: null});
+    // TODO: check if datePickerOptions is IAngularMyDpOptions type
+    if (options && options.datePickerOptions) {
+      this.myOptions = {...this.myOptions, ...options.datePickerOptions};
+    }
   }
 
   validate(): void {

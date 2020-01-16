@@ -16,6 +16,7 @@ import {ControlAdapterFileComponent} from "./components/controls/control-adpter-
 import {ControlAdapterTextInputComponent} from "./components/controls/control-adapter-textinput/control-adapter-text-input.component";
 import {ControlAdapterDatepickerComponent} from "./components/controls/control-adapter-datepicker/control-adapter-datepicker.component";
 import { AngularMyDatePickerModule } from 'angular-mydatepicker';
+import {CustomValueAccessorDirective} from "./directives/custom-value-accessor/custom-value-accessor.directive";
 
 @NgModule({
   declarations: [
@@ -30,7 +31,8 @@ import { AngularMyDatePickerModule } from 'angular-mydatepicker';
     ControlAdapterTextareaComponent,
     ControlAdapterFileComponent,
     ControlAdapterTextInputComponent,
-    ControlAdapterDatepickerComponent
+    ControlAdapterDatepickerComponent,
+    CustomValueAccessorDirective
   ],
   exports: [
     IbAutoFormComponent,
@@ -44,7 +46,8 @@ import { AngularMyDatePickerModule } from 'angular-mydatepicker';
     ControlAdapterTextareaComponent,
     ControlAdapterFileComponent,
     ControlAdapterTextInputComponent,
-    ControlAdapterDatepickerComponent
+    ControlAdapterDatepickerComponent,
+    CustomValueAccessorDirective
   ],
   entryComponents: [
     ControlAdapterCheckboxComponent,
@@ -53,7 +56,7 @@ import { AngularMyDatePickerModule } from 'angular-mydatepicker';
     ControlAdapterTextareaComponent,
     ControlAdapterFileComponent,
     ControlAdapterTextInputComponent,
-    ControlAdapterDatepickerComponent
+    ControlAdapterDatepickerComponent,
   ],
   imports: [CommonModule, ReactiveFormsModule, FormsModule, AngularMyDatePickerModule],
 })
