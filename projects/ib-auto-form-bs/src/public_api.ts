@@ -7,7 +7,6 @@ import {CustomValueAccessorDirective} from "./lib/directives/custom-value-access
 export {IbAutoFormConfigService} from "./lib/services/ib-auto-form-config.service";
 
 export {
-  IbAutoFormControl,
   Validation,
   controlType,
   ControlSimpleItem,
@@ -16,8 +15,6 @@ export {
   ControlAdaptersConfig,
   IbAutoFormControlGroup,
   ValidationMap,
-  FormValues,
-  ControlValidationEvent,
   IbAutoFormGroup,
   IbFormGeneralConfig
 } from "./lib/models/ib-auto-form";

@@ -12,15 +12,22 @@ export class IbAutoFormConfigService implements IbFormGeneralConfig {
    * Custom control group component to use
    */
   customGroupComponent: Type<IbAutoFormGroup>;
+
+  /**
+   * Should the custom controls (if set above) extend existing controls. By default it will replace them completely
+   */
   extendExistingControls: boolean;
 
-  private _controlAdaptersConfig = dynamicControlAdapters;
+  /**
+   * A flag that check weather the form should create and display the control groups.
+   * By default it set to true. If set to false, the control groups will be striped out and only the
+   * control will be display without any separation.
+   */
+  useGroups: boolean;
 
-  get controlAdaptersConfig(): ControlAdaptersConfig {
-    return this._controlAdaptersConfig;
-  }
+  /**
+   * Add a custom controls configuration
+   */
+  controlAdaptersConfig: ControlAdaptersConfig = dynamicControlAdapters;
 
-  set controlAdaptersConfig(config: ControlAdaptersConfig) {
-    this._controlAdaptersConfig = config;
-  }
 }

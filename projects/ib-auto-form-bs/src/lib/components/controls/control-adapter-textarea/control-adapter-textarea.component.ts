@@ -16,6 +16,7 @@ import {BasicControlAdapterComponent} from "../basic-control-adapter.component";
                     [formControlName]="control.id"
                     autocomplete="on"
                     [name]="control.id"
+                    [rows]="control.rows"
                     (blur)="validate()"
                     [attr.rows]="control.rows"
                     [id]="now+control.id">

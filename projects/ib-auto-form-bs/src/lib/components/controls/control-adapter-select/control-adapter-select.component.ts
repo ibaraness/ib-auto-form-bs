@@ -13,6 +13,7 @@ import {BasicControlAdapterComponent} from "../basic-control-adapter.component";
           <select class="form-control"
                   [formControlName]="control.id"
                   [multiple]="control.multipleSelect"
+                  [size]="control.multipleSelect && control.rows"
                   [ngClass]="{
                     'is-invalid': !valid && dirty,
                     'is-valid': valid

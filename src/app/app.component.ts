@@ -126,7 +126,8 @@ export class AppComponent implements OnInit {
               key: "30$",
               title: "Third plan"
             }
-          ]
+          ],
+          rows: 5
         },
         {
           id: 'message',
