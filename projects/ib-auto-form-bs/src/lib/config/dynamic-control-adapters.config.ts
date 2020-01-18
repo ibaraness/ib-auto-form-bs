@@ -1,4 +1,4 @@
-import {ControlAdaptersConfig, controlType} from "../models/ib-auto-form";
+import {IBControlAdaptersConfig, IBControlType} from "../models/ib-auto-form";
 import {ControlAdapterCheckboxComponent} from "../components/controls/control-adapter-checkbox/control-adapter-checkbox.component";
 import {ControlAdapterSelectComponent} from "../components/controls/control-adapter-select/control-adapter-select.component";
 import {ControlAdapterRadioComponent} from "../components/controls/control-adapter-radio/control-adapter-radio.component";
@@ -8,12 +8,12 @@ import {ControlAdapterTextInputComponent} from "../components/controls/control-a
 import {ControlAdapterDatepickerComponent} from "../components/controls/control-adapter-datepicker/control-adapter-datepicker.component";
 
 
-export const dynamicControlAdapters: ControlAdaptersConfig = {
-  [controlType.TEXT_INPUT]: ControlAdapterTextInputComponent,
-  [controlType.CHECKBOX]: ControlAdapterCheckboxComponent,
-  [controlType.SELECT]: ControlAdapterSelectComponent,
-  [controlType.RADIO]: ControlAdapterRadioComponent,
-  [controlType.TEXTAREA]: ControlAdapterTextareaComponent,
-  [controlType.FILE]: ControlAdapterFileComponent,
-  [controlType.DATE_PICKER]: ControlAdapterDatepickerComponent
+export const dynamicControlAdapters: IBControlAdaptersConfig = {
+  [IBControlType.TEXT_INPUT]: ControlAdapterTextInputComponent,
+  [IBControlType.CHECKBOX]: ControlAdapterCheckboxComponent,
+  [IBControlType.SELECT]: ControlAdapterSelectComponent,
+  [IBControlType.RADIO]: ControlAdapterRadioComponent,
+  [IBControlType.TEXTAREA]: ControlAdapterTextareaComponent,
+  [IBControlType.FILE]: ControlAdapterFileComponent,
+  [IBControlType.DATE_PICKER]: ControlAdapterDatepickerComponent
 };

@@ -4,7 +4,7 @@ import {Input, Type} from "@angular/core";
 /**
  * Validation object
  */
-export interface Validation {
+export interface IBValidation {
   /**
    * The name of the validation (email, min, max etc.)
    */
@@ -19,7 +19,7 @@ export interface Validation {
 /**
  * Existing control type names
  */
-export enum controlType {
+export enum IBControlType {
   TEXT_INPUT = 'text',
   CHECKBOX = 'checkbox',
   SELECT = 'select',
@@ -32,7 +32,7 @@ export enum controlType {
 /**
  * Represents an item in a select or radio-button
  */
-export interface ControlSimpleItem {
+export interface IBControlSimpleItem {
   /**
    * Corresponds to the value the control will hold
    */
@@ -48,7 +48,7 @@ export interface ControlSimpleItem {
  * Form control metadata.
  * Each control must have at least type and id, all other properties are optional
  */
-export interface DynamicControlOptions {
+export interface IBDynamicControlOptions {
   /**
    * The control id, which will be used for formControlName directive value
    */
@@ -67,7 +67,7 @@ export interface DynamicControlOptions {
   /**
    * A specific control type name as found on controlType enum, or a custom one
    */
-  type: controlType | string;
+  type: IBControlType | string;
 
   /**
    * An optional tag to add for the control. Can be used to group specific controls
@@ -93,12 +93,12 @@ export interface DynamicControlOptions {
   /**
    * A list of ControlSimpleItem objects to pass to radio-buttons or select control (Or other custom control)
    */
-  items?: ControlSimpleItem[];
+  items?: IBControlSimpleItem[];
 
   /**
    * A list of Validation objects to pass for the control
    */
-  validations?: Validation[];
+  validations?: IBValidation[];
 
   /**
    * A custom css className
@@ -124,8 +124,8 @@ export interface DynamicControlOptions {
 /**
  * Each custom control should implement the following interface
  */
-export interface IbAutoFormControlAdapter {
-  control: DynamicControlOptions;
+export interface IBAutoFormControlAdapter {
+  control: IBDynamicControlOptions;
   form: FormGroup;
 
   /**
@@ -139,23 +139,23 @@ export interface IbAutoFormControlAdapter {
  * - The key (name: string) is the control name
  * - The value is the control (IbAutoFormControlAdapter)
  */
-export interface ControlAdaptersConfig {
-  [name: string]: Type<IbAutoFormControlAdapter>;
+export interface IBControlAdaptersConfig {
+  [name: string]: Type<IBAutoFormControlAdapter>;
 }
 
 /**
  * General configuration of the form
  */
-export interface IbFormGeneralConfig {
+export interface IBFormGeneralConfig {
   /**
    * Add a custom group component
    */
-  customGroupComponent?: Type<IbAutoFormGroup>;
+  customGroupComponent?: Type<IBAutoFormGroup>;
 
   /**
    * Add a custom controls configuration
    */
-  controlAdaptersConfig?: ControlAdaptersConfig;
+  controlAdaptersConfig?: IBControlAdaptersConfig;
 
   /**
    * Should the custom controls (if set above) extend existing controls. By default it will replace them completely
@@ -173,16 +173,16 @@ export interface IbFormGeneralConfig {
 /**
  * Form control group - Contains all the controls as well as other groups
  */
-export interface IbAutoFormControlGroup {
+export interface IBAutoFormControlGroup {
   /**
    * A list of all control metadata objects
    */
-  controls?: DynamicControlOptions[];
+  controls?: IBDynamicControlOptions[];
 
   /**
    * Sub groups that may contains other controls or groups
    */
-  groups?: IbAutoFormControlGroup[];
+  groups?: IBAutoFormControlGroup[];
 
   /**
    * An optional tag to add for the group
@@ -210,13 +210,13 @@ export interface IbAutoFormControlGroup {
  *
  * @description
  * Because some of Angular's Validator functions are of ValidatorFn function type and other acts as a factory
- * functions that return ValidatorFn (like Validators.minLength), ValidatorFnFactory type was created.
+ * functions that return ValidatorFn (like Validators.minLength), IBValidatorFnFactory type was created.
  *
- * ValidatorFnFactory is simply a factory function that returns ValidatorFn function. It's important to
+ * IBValidatorFnFactory is simply a factory function that returns ValidatorFn function. It's important to
  * understand it when creating custom validators or adding additional angular validator functions.
  *
  * @usageNotes
- * For example, if we want to create a factory function (ValidatorFnFactory) for Validators.required validator
+ * For example, if we want to create a factory function (IBValidatorFnFactory) for Validators.required validator
  * we will do the following:
  * const myFactory = () => Validators.required
  * We do that because Validators.required already returns a ValidatorFn, so we wrap it in an arrow function
@@ -240,20 +240,20 @@ export interface IbAutoFormControlGroup {
  *  You can check angular documentation for additional information on creating custom validator
  *  [Custom validators](https://angular.io/guide/form-validation#custom-validators)
  */
-export type ValidatorFnFactory = (...params) => ValidatorFn;
+export type IBValidatorFnFactory = (...params) => ValidatorFn;
 
 /**
  * Validation key/value object
  *  - nameWithParams: The name of the validation with optional parameters separated by '-'
- *  - ValidatorFnFactory - A factory function that returns angular's ValidatorFn function
+ *  - IBValidatorFnFactory - A factory function that returns angular's ValidatorFn function
  */
-export interface ValidationMap {
-  [nameWithParams: string]: ValidatorFnFactory;
+export interface IBValidationMap {
+  [nameWithParams: string]: IBValidatorFnFactory;
 }
 
 /**
  * An abstract class for custom form group component
  */
-export abstract class IbAutoFormGroup {
-  @Input() group: IbAutoFormControlGroup;
+export abstract class IBAutoFormGroup {
+  @Input() group: IBAutoFormControlGroup;
 }

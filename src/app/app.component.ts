@@ -1,4 +1,4 @@
-import {IbAutoFormComponent, IbAutoFormConfigService, IbAutoFormControlGroup, IbFormGeneralConfig} from "ib-auto-form-bs";
+import {IBAutoFormComponent, IBAutoFormConfigService, IBAutoFormControlGroup, IBFormGeneralConfig} from "ib-auto-form-bs";
 import {Component, OnInit, ViewChild} from "@angular/core";
 import {CustomGroupComponent} from "./custom_controls/components/custom-group.component";
 import {customDynamicControlAdapters} from "./custom_controls/custom-config";
@@ -11,9 +11,9 @@ import {customDynamicControlAdapters} from "./custom_controls/custom-config";
 })
 export class AppComponent implements OnInit {
 
-  @ViewChild("dynamicForms", {static: true}) dynamicForms: IbAutoFormComponent;
+  @ViewChild("dynamicForms", {static: true}) dynamicForms: IBAutoFormComponent;
 
-  public controlGroups: IbAutoFormControlGroup[] = [
+  public controlGroups: IBAutoFormControlGroup[] = [
     {
       title: 'Personal Details',
       className: 'personal-details-section',
@@ -176,15 +176,15 @@ export class AppComponent implements OnInit {
     }
   ];
 
-  specificConfig: IbFormGeneralConfig = {
+  specificConfig: IBFormGeneralConfig = {
     customGroupComponent: CustomGroupComponent,
   };
 
-  specificConfig2: IbFormGeneralConfig = {
+  specificConfig2: IBFormGeneralConfig = {
     controlAdaptersConfig: customDynamicControlAdapters
   };
 
-  constructor(private configService: IbAutoFormConfigService) {
+  constructor(private configService: IBAutoFormConfigService) {
     // this.configService.controlAdaptersConfig = customDynamicControlAdapters;
     // this.configService.customGroupComponent = CustomGroupComponent;
   }
@@ -194,9 +194,9 @@ export class AppComponent implements OnInit {
   }
 
   submit() {
-    if (this.dynamicForms) {
-      const a = this.dynamicForms.getFormData();
-      console.log("submiting", a, this.dynamicForms.form);
+    const submitStatus = this.dynamicForms && this.dynamicForms.submit();
+    if (submitStatus) {
+      console.log("submiting", this.dynamicForms.getFormData());
       return;
     }
   }

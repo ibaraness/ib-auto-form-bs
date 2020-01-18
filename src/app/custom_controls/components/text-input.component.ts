@@ -1,13 +1,13 @@
-import {Component, OnInit, ViewChild} from "@angular/core";
+import {Component, OnInit} from "@angular/core";
 import {FormGroup} from "@angular/forms";
-import {DynamicControlOptions, IbAutoFormControlAdapter} from "ib-auto-form-bs";
+import {IBAutoFormControlAdapter, IBDynamicControlOptions} from "ib-auto-form-bs";
 
 
 @Component({
   selector: 'app-text-input',
   template: `
       <div *ngIf="form"
-           [formGroup]="form" >
+           [formGroup]="form">
           <label [for]="control.id">{{control?.title + (required ? '*' : '')}} </label>
           <input type="text" [formControlName]="control.id" [name]="control.id" [id]="control.id" (blur)="validate()" autocomplete="on">
           <div>{{errorMessage}}</div>
@@ -15,8 +15,8 @@ import {DynamicControlOptions, IbAutoFormControlAdapter} from "ib-auto-form-bs";
 
   `
 })
-export class TextInputComponent implements IbAutoFormControlAdapter, OnInit {
-  control: DynamicControlOptions;
+export class TextInputComponent implements IBAutoFormControlAdapter, OnInit {
+  control: IBDynamicControlOptions;
   form: FormGroup;
   required: boolean;
   dirty: boolean;

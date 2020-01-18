@@ -2,25 +2,25 @@
  * Public API Surface of ib-auto-form-bs
  */
 
-import {CustomValueAccessorDirective} from "./lib/directives/custom-value-accessor/custom-value-accessor.directive";
+import {IBCustomValueAccessorDirective} from "./lib/directives/custom-value-accessor/i-b-custom-value-accessor.directive";
 
-export {IbAutoFormConfigService} from "./lib/services/ib-auto-form-config.service";
+export {IBAutoFormConfigService} from "./lib/services/i-b-auto-form-config.service";
 
 export {
-  Validation,
-  controlType,
-  ControlSimpleItem,
-  DynamicControlOptions,
-  IbAutoFormControlAdapter,
-  ControlAdaptersConfig,
-  IbAutoFormControlGroup,
-  ValidationMap,
-  IbAutoFormGroup,
-  IbFormGeneralConfig
+  IBValidation,
+  IBControlType,
+  IBControlSimpleItem,
+  IBDynamicControlOptions,
+  IBAutoFormControlAdapter,
+  IBControlAdaptersConfig,
+  IBAutoFormControlGroup,
+  IBValidationMap,
+  IBAutoFormGroup,
+  IBFormGeneralConfig
 } from "./lib/models/ib-auto-form";
 
 
-export {IbAutoFormComponent} from "./lib/ib-auto-form.component";
-export {DynamicControlDirective} from "./lib/directives/dynamic-control/dynamic-control.directive";
+export {IBAutoFormComponent} from "./lib/i-b-auto-form.component";
+export {IBDynamicControlDirective} from "./lib/directives/dynamic-control/i-b-dynamic-control.directive";
 export {IbAutoFormBsModule} from "./lib/ib-auto-form-bs.module";
-export {CustomValueAccessorDirective} from './lib/directives/custom-value-accessor/custom-value-accessor.directive';
+export {IBCustomValueAccessorDirective} from './lib/directives/custom-value-accessor/i-b-custom-value-accessor.directive';

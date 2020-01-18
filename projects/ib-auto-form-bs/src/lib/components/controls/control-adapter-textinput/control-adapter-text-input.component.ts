@@ -1,5 +1,5 @@
 import {Component, OnInit} from "@angular/core";
-import {IbAutoFormControlAdapter} from "../../../models/ib-auto-form";
+import {IBAutoFormControlAdapter} from "../../../models/ib-auto-form";
 import * as _ from "lodash";
 import {BasicControlAdapterComponent} from "../basic-control-adapter.component";
 
@@ -30,7 +30,7 @@ import {BasicControlAdapterComponent} from "../basic-control-adapter.component";
   `
 })
 export class ControlAdapterTextInputComponent extends BasicControlAdapterComponent
-  implements IbAutoFormControlAdapter, OnInit {
+  implements IBAutoFormControlAdapter, OnInit {
   inputType: string;
 
   ngOnInit(): void {

@@ -1,7 +1,7 @@
 import { Injectable } from "@angular/core";
 import { ValidatorFn, AbstractControl } from "@angular/forms";
 import { validationConfig } from "../config/validation.config";
-import { ValidationMap, Validation } from "../models/ib-auto-form";
+import { IBValidationMap, IBValidation } from "../models/ib-auto-form";
 
 @Injectable()
 export class IbAutoFormValidationService {
@@ -12,7 +12,7 @@ export class IbAutoFormValidationService {
    *  - name The name of the validation
    *  - Function - The actual validation function
    */
-  validationConfig: ValidationMap;
+  validationConfig: IBValidationMap;
 
   constructor() {
     this.validationConfig = validationConfig;
@@ -49,7 +49,7 @@ export class IbAutoFormValidationService {
    * Set a custom validation config
    * @param validationConfigLocal
    */
-  setValidationConfig(validationConfigLocal: ValidationMap = validationConfig) {
+  setValidationConfig(validationConfigLocal: IBValidationMap = validationConfig) {
     this.validationConfig = validationConfigLocal;
   }
 
@@ -58,7 +58,7 @@ export class IbAutoFormValidationService {
    * @param formControl - The actual formGroup control
    * @param validations - The validations list
    */
-  getErrorMessages(formControl: AbstractControl, validations: Validation[]): string {
+  getErrorMessages(formControl: AbstractControl, validations: IBValidation[]): string {
     if (!formControl || !formControl.errors) {
       return null;
     }

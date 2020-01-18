@@ -1,10 +1,10 @@
 import {Component, EventEmitter, Input, OnInit, Output, ViewEncapsulation} from "@angular/core";
 import {FormControl, FormGroup} from "@angular/forms";
-import {IbAutoFormControlGroup, IbFormGeneralConfig} from "./models/ib-auto-form";
+import {IBAutoFormControlGroup, IBFormGeneralConfig} from "./models/ib-auto-form";
 import {getContrtolsFromGroups} from "./utils/utils";
 import {IbAutoFormValidationService} from "./services/ib-auto-form-validation.service";
 import {BehaviorSubject} from "rxjs";
-import {IbAutoFormConfigService} from "./services/ib-auto-form-config.service";
+import {IBAutoFormConfigService} from "./services/i-b-auto-form-config.service";
 
 @Component({
   selector: "ib-dynamic-forms",
@@ -32,15 +32,15 @@ import {IbAutoFormConfigService} from "./services/ib-auto-form-config.service";
       </ng-template>
   `,
   styleUrls: [
-    './ib-auto-form.component.scss'
+    './i-b-auto-form.component.scss'
   ],
   encapsulation: ViewEncapsulation.None
 })
-export class IbAutoFormComponent implements OnInit {
+export class IBAutoFormComponent implements OnInit {
   /**
    * a list of DynamicFormsControlGroup objects, which contains all the controls and groups metadata
    */
-  @Input() controlGroups: IbAutoFormControlGroup[];
+  @Input() controlGroups: IBAutoFormControlGroup[];
 
   /**
    * A flag that check weather the form should create and display the control groups.
@@ -52,7 +52,7 @@ export class IbAutoFormComponent implements OnInit {
   /**
    * General configuration of the form
    */
-  @Input() config: IbFormGeneralConfig;
+  @Input() config: IBFormGeneralConfig;
 
   /**
    * Form ready event emitter
@@ -69,7 +69,7 @@ export class IbAutoFormComponent implements OnInit {
    */
   public form: FormGroup;
 
-  constructor(private validationService: IbAutoFormValidationService, private globalConfig: IbAutoFormConfigService) {
+  constructor(private validationService: IbAutoFormValidationService, private globalConfig: IBAutoFormConfigService) {
   }
 
   ngOnInit() {
@@ -81,14 +81,23 @@ export class IbAutoFormComponent implements OnInit {
    * Get form data from all the fields
    */
   getFormData(): any {
-    this.markAllAsDirty();
-    this.submit$.next(true);
-    if (this.form && this.form.valid) {
-      return this.form.value;
-    }
-    return null;
+    return this.form && this.form.value || null;
   }
 
+  /**
+   * Trigger form validation check and return true if all valid
+   * @return true if the form is valid, false if invalid
+   */
+  submit(): boolean {
+    this.markAllAsDirty();
+    this.submit$.next(true);
+    return this.form && this.form.valid;
+  }
+
+  /**
+   * Set any relevant specific or global configurations set by the user
+   * currently only useGroups property can be set from configuration
+   */
   private setConfiguration() {
     const useGroups = this.config && this.config.useGroups
       || this.globalConfig && this.globalConfig.useGroups

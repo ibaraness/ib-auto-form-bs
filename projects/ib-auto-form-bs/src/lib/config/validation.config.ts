@@ -1,8 +1,8 @@
 import { Validators } from "@angular/forms";
 import { only_letters, password } from "../constants/validations";
-import { ValidationMap } from "../models/ib-auto-form";
+import { IBValidationMap } from "../models/ib-auto-form";
 
-export const validationConfig: ValidationMap = {
+export const validationConfig: IBValidationMap = {
   required: () => Validators.required,
   minlength: Validators.minLength,
   only_letters,

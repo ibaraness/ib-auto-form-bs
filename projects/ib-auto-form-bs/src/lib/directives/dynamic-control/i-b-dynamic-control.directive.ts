@@ -1,26 +1,42 @@
-import {ComponentFactoryResolver, Directive, Input, OnInit, Type, ViewContainerRef} from "@angular/core";
+import {ComponentFactoryResolver, Directive, Input, OnDestroy, OnInit, Type, ViewContainerRef} from "@angular/core";
 import {FormGroup} from "@angular/forms";
 
-import {DynamicControlOptions, IbAutoFormControlAdapter, IbFormGeneralConfig} from "../../models/ib-auto-form";
-import {BehaviorSubject} from "rxjs";
-import {IbAutoFormConfigService} from "../../services/ib-auto-form-config.service";
+import {IBDynamicControlOptions, IBAutoFormControlAdapter, IBFormGeneralConfig} from "../../models/ib-auto-form";
+import {BehaviorSubject, Subscription} from "rxjs";
+import {IBAutoFormConfigService} from "../../services/i-b-auto-form-config.service";
 import {dynamicControlAdapters} from "../../config/dynamic-control-adapters.config";
 
 @Directive({
   selector: "[ibDynamicControl]"
 })
-export class DynamicControlDirective implements OnInit {
+export class IBDynamicControlDirective implements OnInit, OnDestroy {
+  /**
+   * The form's main FormGroup instance
+   */
   @Input() form: FormGroup;
-  @Input() control: DynamicControlOptions;
+
+  /**
+   * Form control metadata.
+   */
+  @Input() control: IBDynamicControlOptions;
+
+  /**
+   * Listen to submit action (Will trigger validation check)
+   */
   @Input() submit$: BehaviorSubject<boolean>;
-  @Input() config: IbFormGeneralConfig;
-  private instance: IbAutoFormControlAdapter;
+
+  /**
+   * Specific form config setting
+   */
+  @Input() config: IBFormGeneralConfig;
+  private instance: IBAutoFormControlAdapter;
   private controlsConfig;
+  private submitSubscription: Subscription;
 
   constructor(
     private viewContainer: ViewContainerRef,
     private componentFactoryResolver: ComponentFactoryResolver,
-    private configService: IbAutoFormConfigService
+    private configService: IBAutoFormConfigService
   ) {
   }
 
@@ -28,25 +44,34 @@ export class DynamicControlDirective implements OnInit {
     this.setControlAdapterConfig();
 
     this.createControl();
-    this.submit$.subscribe(isSubmit => {
+    this.submitSubscription = this.submit$.subscribe(isSubmit => {
       if (isSubmit && this.instance) {
         this.instance.validate();
       }
     });
   }
 
-  createControl() {
+  /**
+   * Create an control component from the control metadata
+   */
+  protected createControl() {
     if (!this.viewContainer || !this.control || !this.controlsConfig || !this.controlsConfig[this.control.type]) {
       return;
     }
     this.viewContainer.clear();
     const componentFactory = this.componentFactoryResolver.resolveComponentFactory(
-      this.controlsConfig[this.control.type] as Type<IbAutoFormControlAdapter>
+      this.controlsConfig[this.control.type] as Type<IBAutoFormControlAdapter>
     );
     const componentRef = this.viewContainer.createComponent(componentFactory);
     componentRef.instance.control = this.control;
     componentRef.instance.form = this.form;
     this.instance = componentRef.instance;
+  }
+
+  ngOnDestroy(): void {
+    if (this.submitSubscription) {
+      this.submitSubscription.unsubscribe();
+    }
   }
 
   private setControlAdapterConfig() {

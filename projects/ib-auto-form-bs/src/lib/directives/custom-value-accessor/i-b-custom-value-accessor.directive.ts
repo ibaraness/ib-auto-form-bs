@@ -7,14 +7,18 @@ import {ControlValueAccessor, NG_VALUE_ACCESSOR} from "@angular/forms";
   providers: [
     {
       provide: NG_VALUE_ACCESSOR,
-      useExisting: forwardRef(() => CustomValueAccessorDirective),
+      useExisting: forwardRef(() => IBCustomValueAccessorDirective),
       multi: true
     }
   ]
 })
-export class CustomValueAccessorDirective implements ControlValueAccessor, OnDestroy {
+export class IBCustomValueAccessorDirective implements ControlValueAccessor, OnDestroy {
 
+  /**
+   * IF the control was set to disable from inside the form, notify the child component
+   */
   @Output() disabled: EventEmitter<boolean> = new EventEmitter<boolean>();
+
   /**
    * Create a banana in a box mechanism for the control value
    */
@@ -30,6 +34,7 @@ export class CustomValueAccessorDirective implements ControlValueAccessor, OnDes
       this.onChange(value);
     });
   }
+
 
   markAsTouched() {
     setTimeout(() => {

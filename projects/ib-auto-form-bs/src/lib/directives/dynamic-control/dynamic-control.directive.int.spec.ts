@@ -1,7 +1,7 @@
 import { NO_ERRORS_SCHEMA } from "@angular/core";
 import { ComponentFixture, TestBed } from "@angular/core/testing";
 import { FormControl, FormGroup } from "@angular/forms";
-import { DynamicControlOptions } from "../../models/ib-auto-form";
+import { IBDynamicControlOptions } from "../../models/ib-auto-form";
 import { ConatinerComponent } from "./dynamic-control.directive.spec";
 import { TestModule } from "./test.module";
 
@@ -10,7 +10,7 @@ describe("DynamicControlDirective Int", () => {
   let container: ConatinerComponent;
   let element: HTMLElement;
   let formGroup: FormGroup;
-  let control: DynamicControlOptions;
+  let control: IBDynamicControlOptions;
 
   beforeEach(async () => {
     TestBed.configureTestingModule({

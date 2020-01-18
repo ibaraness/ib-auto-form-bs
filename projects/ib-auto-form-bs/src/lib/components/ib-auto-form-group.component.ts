@@ -1,5 +1,5 @@
 import {Component} from "@angular/core";
-import {IbAutoFormGroup} from "../models/ib-auto-form";
+import {IBAutoFormGroup} from "../models/ib-auto-form";
 
 @Component({
   selector: 'ib-auto-form-group',
@@ -10,6 +10,6 @@ import {IbAutoFormGroup} from "../models/ib-auto-form";
       </fieldset>
   `
 })
-export class IbAutoFormGroupComponent extends IbAutoFormGroup {
+export class IbAutoFormGroupComponent extends IBAutoFormGroup {
 
 }

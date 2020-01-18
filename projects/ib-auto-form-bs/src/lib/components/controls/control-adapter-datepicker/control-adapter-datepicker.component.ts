@@ -50,6 +50,7 @@ export class ControlAdapterDatepickerComponent extends BasicControlAdapterCompon
   }
 
   ngOnInit(): void {
+    super.ngOnInit();
     const options = this.control.options;
 
     // TODO: check if datePickerOptions is IAngularMyDpOptions type

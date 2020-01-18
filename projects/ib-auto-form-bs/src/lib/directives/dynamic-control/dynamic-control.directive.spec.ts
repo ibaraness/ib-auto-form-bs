@@ -1,7 +1,7 @@
 import { Component, NO_ERRORS_SCHEMA } from "@angular/core";
 import { ComponentFixture, TestBed } from "@angular/core/testing";
 import { FormGroup } from "@angular/forms";
-import { DynamicControlOptions } from "../../models/ib-auto-form";
+import { IBDynamicControlOptions } from "../../models/ib-auto-form";
 import { IbAutoFormValidationService } from "../../services/ib-auto-form-validation.service";
 
 @Component({
@@ -11,7 +11,7 @@ import { IbAutoFormValidationService } from "../../services/ib-auto-form-validat
 })
 export class ConatinerComponent {
   public form: FormGroup;
-  public control: DynamicControlOptions;
+  public control: IBDynamicControlOptions;
   createControl() {}
 }
 

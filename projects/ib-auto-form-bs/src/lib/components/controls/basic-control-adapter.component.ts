@@ -1,4 +1,4 @@
-import {DynamicControlOptions, IbAutoFormControlAdapter} from "../../models/ib-auto-form";
+import {IBDynamicControlOptions, IBAutoFormControlAdapter} from "../../models/ib-auto-form";
 import {AbstractControl, FormGroup} from "@angular/forms";
 import {Component, OnDestroy, OnInit} from "@angular/core";
 import {Subscription} from "rxjs";
@@ -8,11 +8,11 @@ import {IbAutoFormValidationService} from "../../services/ib-auto-form-validatio
  * A base class for all form controls
  */
 @Component({ template: '' })
-export class BasicControlAdapterComponent implements IbAutoFormControlAdapter, OnInit, OnDestroy {
+export class BasicControlAdapterComponent implements IBAutoFormControlAdapter, OnInit, OnDestroy {
   /**
    * Form control metadata
    */
-  control: DynamicControlOptions;
+  control: IBDynamicControlOptions;
 
   /**
    * The FormGroup instance of the entire form
@@ -67,7 +67,6 @@ export class BasicControlAdapterComponent implements IbAutoFormControlAdapter, O
       throw new Error("control<DynamicControlOptions> property must be set!");
     }
     this.formControl = this.form.get(this.control.id);
-    console.log("this.formControl", this.formControl);
     this.required = this.control.validations && !!this.control.validations.find(valObj => valObj.validation === "required");
     this.setValidationSubscription();
   }

@@ -9,8 +9,8 @@ import {
   ViewChild,
   ViewContainerRef
 } from "@angular/core";
-import {IbAutoFormGroup, IbFormGeneralConfig} from "../models/ib-auto-form";
-import {IbAutoFormConfigService} from "../services/ib-auto-form-config.service";
+import {IBAutoFormGroup, IBFormGeneralConfig} from "../models/ib-auto-form";
+import {IBAutoFormConfigService} from "../services/i-b-auto-form-config.service";
 
 @Component({
   selector: 'ib-auto-form-group-factory',
@@ -25,16 +25,16 @@ import {IbAutoFormConfigService} from "../services/ib-auto-form-config.service";
       </ng-template>
   `
 })
-export class IbAutoFormGroupFactoryComponent extends IbAutoFormGroup implements AfterContentInit {
+export class IbAutoFormGroupFactoryComponent extends IBAutoFormGroup implements AfterContentInit {
   @ViewChild('basicGroupTemp', { static: true }) basicGroupTemp: TemplateRef<any>;
-  @Input() config: IbFormGeneralConfig;
-  customGroupComponent: Type<IbAutoFormGroup>;
+  @Input() config: IBFormGeneralConfig;
+  customGroupComponent: Type<IBAutoFormGroup>;
 
   constructor(
     private injector: Injector,
     private viewContainerRef: ViewContainerRef,
     private componentFactory: ComponentFactoryResolver,
-    public configService: IbAutoFormConfigService
+    public configService: IBAutoFormConfigService
   ) {
     super();
   }

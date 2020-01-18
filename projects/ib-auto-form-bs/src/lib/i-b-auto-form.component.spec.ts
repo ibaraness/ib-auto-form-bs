@@ -1,22 +1,22 @@
 import { NO_ERRORS_SCHEMA } from "@angular/core";
 import { async, ComponentFixture, TestBed } from "@angular/core/testing";
-import { IbAutoFormComponent } from "./ib-auto-form.component";
+import { IBAutoFormComponent } from "./i-b-auto-form.component";
 import { IbAutoFormValidationService } from "./services/ib-auto-form-validation.service";
 
 describe("DynamicFormsComponent", () => {
-  let component: IbAutoFormComponent;
-  let fixture: ComponentFixture<IbAutoFormComponent>;
+  let component: IBAutoFormComponent;
+  let fixture: ComponentFixture<IBAutoFormComponent>;
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [IbAutoFormComponent],
+      declarations: [IBAutoFormComponent],
       providers: [IbAutoFormValidationService],
       schemas: [NO_ERRORS_SCHEMA]
     }).compileComponents();
   }));
 
   beforeEach(() => {
-    fixture = TestBed.createComponent(IbAutoFormComponent);
+    fixture = TestBed.createComponent(IBAutoFormComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });

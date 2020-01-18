@@ -1,8 +1,8 @@
-import { IbAutoFormControlGroup } from "../models/ib-auto-form";
+import { IBAutoFormControlGroup } from "../models/ib-auto-form";
 import { getContrtolsFromGroups } from "./utils";
 
 describe("Utils: getContrtolsFromGroups", () => {
-  let controlGroups: IbAutoFormControlGroup[];
+  let controlGroups: IBAutoFormControlGroup[];
 
   beforeEach(() => {
     controlGroups = [
