@@ -18,6 +18,7 @@ import {BasicControlAdapterComponent} from "../basic-control-adapter.component";
                      angular-mydatepicker
                      [name]="control.id"
                      [options]="myOptions"
+                     [attr.aria-label]="control.title"
                      [value]="currentValue"
                      [attr.autocomplete]="config.autocomplete || control.autocomplete ? 'on' : 'off'"
                      [ngClass]="{
@@ -28,7 +29,7 @@ import {BasicControlAdapterComponent} from "../basic-control-adapter.component";
                      #dp="angular-mydatepicker"
               />
               <div class="input-group-append">
-                  <button class="btn btn-secondary" type="button" (click)="dp.toggleCalendar()">
+                  <button class="btn btn-secondary" type="button" (click)="dp.toggleCalendar()" aria-label="date picker button">
                       <i class="fas fa-calendar-alt"></i>
                   </button>
               </div>

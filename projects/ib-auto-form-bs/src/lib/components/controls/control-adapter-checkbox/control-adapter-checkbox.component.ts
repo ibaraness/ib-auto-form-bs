@@ -17,6 +17,7 @@ import {BasicControlAdapterComponent} from "../basic-control-adapter.component";
                  autocomplete="on"
                  [name]="control.id"
                  (blur)="validate()"
+                 [attr.aria-label]="control.title"
                  [id]="now+control.id">
           <label class="form-check-label" [for]="now+control.id" [ngClass]="{'required': required}">{{control.title}}</label>
           <div class="invalid-feedback">{{errorMessage}}</div>

@@ -22,6 +22,7 @@ import {BasicControlAdapterComponent} from "../basic-control-adapter.component";
                     'is-invalid': !valid && dirty,
                     'is-valid': !valid && dirty
                   }"
+                  [attr.aria-label]="control.title"
                   [attr.autocomplete]="config.autocomplete || control.autocomplete ? 'on' : 'off'"
                   [name]="control.id"
           >

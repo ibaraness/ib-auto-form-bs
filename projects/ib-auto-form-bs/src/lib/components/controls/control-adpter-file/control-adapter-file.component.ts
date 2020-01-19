@@ -16,6 +16,7 @@ import {BasicControlAdapterComponent} from "../basic-control-adapter.component";
                     'is-valid': valid
                   }"
                  [id]="now+control.id"
+                 [attr.aria-label]="control.title"
                  [name]="control.id"
                  id="exampleFormControlFile1">
       </div>

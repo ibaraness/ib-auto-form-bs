@@ -10,6 +10,7 @@ import {BasicControlAdapterComponent} from "../basic-control-adapter.component";
           <ng-container *ngIf="control.items && control.items.length">
               <div class="form-check" *ngFor="let item of control.items;index as i">
                   <input class="form-check-input" type="radio" autocomplete="on"
+                         [attr.aria-label]="control.title"
                          [name]="control.id" [formControlName]="control.id" [id]="now+control.id+i" [value]="item.key">
                   <label class="form-check-label" [for]="now+control.id+i">
                       {{item.title}}
