@@ -178,6 +178,7 @@ export class AppComponent implements OnInit {
 
   specificConfig: IBFormGeneralConfig = {
     customGroupComponent: CustomGroupComponent,
+    autocomplete: false
   };
 
   specificConfig2: IBFormGeneralConfig = {
@@ -185,6 +186,7 @@ export class AppComponent implements OnInit {
   };
 
   constructor(private configService: IBAutoFormConfigService) {
+    configService.autocomplete = true;
     // this.configService.controlAdaptersConfig = customDynamicControlAdapters;
     // this.configService.customGroupComponent = CustomGroupComponent;
   }

@@ -19,6 +19,7 @@ import {BasicControlAdapterComponent} from "../basic-control-adapter.component";
                     [rows]="control.rows"
                     (blur)="validate()"
                     [attr.rows]="control.rows"
+                    [attr.autocomplete]="config.autocomplete || control.autocomplete ? 'on' : 'off'"
                     [id]="now+control.id">
           </textarea>
           <div class="invalid-feedback">{{errorMessage}}</div>

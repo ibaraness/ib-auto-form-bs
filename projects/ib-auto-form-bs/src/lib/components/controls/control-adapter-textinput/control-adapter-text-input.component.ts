@@ -22,7 +22,7 @@ import {BasicControlAdapterComponent} from "../basic-control-adapter.component";
                     'is-invalid': !valid && dirty,
                     'is-valid': !valid && dirty
                   }"
-                  autocomplete="on"
+                  [attr.autocomplete]="config.autocomplete || control.autocomplete ? 'on' : 'off'"
                   [name]="control.id"
           >
           <div class="invalid-feedback">{{errorMessage}}</div>

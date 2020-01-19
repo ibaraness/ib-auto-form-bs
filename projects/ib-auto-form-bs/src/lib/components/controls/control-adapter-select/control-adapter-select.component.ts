@@ -19,7 +19,7 @@ import {BasicControlAdapterComponent} from "../basic-control-adapter.component";
                     'is-valid': valid
                   }"
                   [id]="now+control.id"
-                  autocomplete="on"
+                  [attr.autocomplete]="config.autocomplete || control.autocomplete ? 'on' : 'off'"
                   [name]="control.id">
               <ng-container *ngIf="control.items && control.items.length"
               ></ng-container>

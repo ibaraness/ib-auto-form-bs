@@ -19,6 +19,7 @@ import {BasicControlAdapterComponent} from "../basic-control-adapter.component";
                      [name]="control.id"
                      [options]="myOptions"
                      [value]="currentValue"
+                     [attr.autocomplete]="config.autocomplete || control.autocomplete ? 'on' : 'off'"
                      [ngClass]="{
                     'is-invalid': !valid && dirty,
                     'is-valid': !valid && dirty

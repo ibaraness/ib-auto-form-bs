@@ -119,6 +119,11 @@ export interface IBDynamicControlOptions {
    * An optional rows value for textarea and select controls
    */
   rows?: number;
+
+  /**
+   * Enable/ disable native autocomplete html attribute
+   */
+  autocomplete?: boolean;
 }
 
 /**
@@ -127,7 +132,7 @@ export interface IBDynamicControlOptions {
 export interface IBAutoFormControlAdapter {
   control: IBDynamicControlOptions;
   form: FormGroup;
-
+  config: IBFormGeneralConfig;
   /**
    * Trigger validation of control
    */
@@ -168,6 +173,11 @@ export interface IBFormGeneralConfig {
    * control will be display without any separation.
    */
   useGroups?: boolean;
+
+  /**
+   * A flag to set input, select and textarea with autocomplete attribute
+   */
+  autocomplete?: boolean;
 }
 
 /**

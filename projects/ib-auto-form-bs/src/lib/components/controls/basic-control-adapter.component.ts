@@ -1,4 +1,4 @@
-import {IBDynamicControlOptions, IBAutoFormControlAdapter} from "../../models/ib-auto-form";
+import {IBAutoFormControlAdapter, IBDynamicControlOptions, IBFormGeneralConfig} from "../../models/ib-auto-form";
 import {AbstractControl, FormGroup} from "@angular/forms";
 import {Component, OnDestroy, OnInit} from "@angular/core";
 import {Subscription} from "rxjs";
@@ -7,7 +7,7 @@ import {IbAutoFormValidationService} from "../../services/ib-auto-form-validatio
 /**
  * A base class for all form controls
  */
-@Component({ template: '' })
+@Component({template: ''})
 export class BasicControlAdapterComponent implements IBAutoFormControlAdapter, OnInit, OnDestroy {
   /**
    * Form control metadata
@@ -18,6 +18,11 @@ export class BasicControlAdapterComponent implements IBAutoFormControlAdapter, O
    * The FormGroup instance of the entire form
    */
   form: FormGroup;
+
+  /**
+   * Form general config
+   */
+  config: IBFormGeneralConfig;
 
   /**
    * Control valid flag
@@ -72,20 +77,6 @@ export class BasicControlAdapterComponent implements IBAutoFormControlAdapter, O
   }
 
   /**
-   * Subscribe to valueChanges observable of the form control.
-   * On value change validate the control
-   */
-  private setValidationSubscription(): void {
-    if (this.formControl) {
-      this.changeSubscription = this.formControl.valueChanges.subscribe(() => {
-        if (this.formControl.dirty) {
-          this.validate();
-        }
-      });
-    }
-  }
-
-  /**
    * Trigger validation test
    */
   validate(): void {
@@ -108,6 +99,20 @@ export class BasicControlAdapterComponent implements IBAutoFormControlAdapter, O
   ngOnDestroy(): void {
     if (this.changeSubscription) {
       this.changeSubscription.unsubscribe();
+    }
+  }
+
+  /**
+   * Subscribe to valueChanges observable of the form control.
+   * On value change validate the control
+   */
+  private setValidationSubscription(): void {
+    if (this.formControl) {
+      this.changeSubscription = this.formControl.valueChanges.subscribe(() => {
+        if (this.formControl.dirty) {
+          this.validate();
+        }
+      });
     }
   }
 

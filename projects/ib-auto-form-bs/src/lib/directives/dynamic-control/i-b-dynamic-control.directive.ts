@@ -1,7 +1,7 @@
 import {ComponentFactoryResolver, Directive, Input, OnDestroy, OnInit, Type, ViewContainerRef} from "@angular/core";
 import {FormGroup} from "@angular/forms";
 
-import {IBDynamicControlOptions, IBAutoFormControlAdapter, IBFormGeneralConfig} from "../../models/ib-auto-form";
+import {IBAutoFormControlAdapter, IBDynamicControlOptions, IBFormGeneralConfig} from "../../models/ib-auto-form";
 import {BehaviorSubject, Subscription} from "rxjs";
 import {IBAutoFormConfigService} from "../../services/i-b-auto-form-config.service";
 import {dynamicControlAdapters} from "../../config/dynamic-control-adapters.config";
@@ -41,6 +41,7 @@ export class IBDynamicControlDirective implements OnInit, OnDestroy {
   }
 
   ngOnInit(): void {
+    this.setConfig();
     this.setControlAdapterConfig();
 
     this.createControl();
@@ -49,6 +50,12 @@ export class IBDynamicControlDirective implements OnInit, OnDestroy {
         this.instance.validate();
       }
     });
+  }
+
+  ngOnDestroy(): void {
+    if (this.submitSubscription) {
+      this.submitSubscription.unsubscribe();
+    }
   }
 
   /**
@@ -65,13 +72,20 @@ export class IBDynamicControlDirective implements OnInit, OnDestroy {
     const componentRef = this.viewContainer.createComponent(componentFactory);
     componentRef.instance.control = this.control;
     componentRef.instance.form = this.form;
+    componentRef.instance.config = this.config;
     this.instance = componentRef.instance;
   }
 
-  ngOnDestroy(): void {
-    if (this.submitSubscription) {
-      this.submitSubscription.unsubscribe();
-    }
+  private setConfig() {
+    const {customGroupComponent, controlAdaptersConfig, extendExistingControls, useGroups, autocomplete} = this.configService;
+    this.config = {
+      customGroupComponent,
+      controlAdaptersConfig,
+      extendExistingControls,
+      useGroups,
+      autocomplete,
+      ...(this.config && {...this.config})
+    };
   }
 
   private setControlAdapterConfig() {
@@ -82,9 +96,5 @@ export class IBDynamicControlDirective implements OnInit, OnDestroy {
       };
       return;
     }
-    this.controlsConfig = {
-      ...(this.configService.extendExistingControls && {...dynamicControlAdapters}),
-      ...this.configService.controlAdaptersConfig
-    };
   }
 }

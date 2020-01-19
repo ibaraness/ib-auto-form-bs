@@ -30,4 +30,9 @@ export class IBAutoFormConfigService implements IBFormGeneralConfig {
    */
   controlAdaptersConfig: IBControlAdaptersConfig = dynamicControlAdapters;
 
+  /**
+   * A flag to set input, select and textarea with autocomplete attribute
+   */
+  autocomplete: boolean;
+
 }

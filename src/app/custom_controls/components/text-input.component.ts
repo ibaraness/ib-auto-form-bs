@@ -1,6 +1,7 @@
 import {Component, OnInit} from "@angular/core";
 import {FormGroup} from "@angular/forms";
 import {IBAutoFormControlAdapter, IBDynamicControlOptions} from "ib-auto-form-bs";
+import {IBFormGeneralConfig} from "../../../../projects/ib-auto-form-bs/src/lib/models/ib-auto-form";
 
 
 @Component({
@@ -19,6 +20,7 @@ export class TextInputComponent implements IBAutoFormControlAdapter, OnInit {
   control: IBDynamicControlOptions;
   form: FormGroup;
   required: boolean;
+  config: IBFormGeneralConfig;
   dirty: boolean;
   valid: boolean;
   errorMessage: string;
