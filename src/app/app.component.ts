@@ -2,6 +2,7 @@ import {IBAutoFormComponent, IBAutoFormConfigService, IBAutoFormControlGroup, IB
 import {Component, OnInit, ViewChild} from "@angular/core";
 import {CustomGroupComponent} from "./custom_controls/components/custom-group.component";
 import {customDynamicControlAdapters} from "./custom_controls/custom-config";
+import {Subject} from "rxjs";
 
 
 @Component({
@@ -13,16 +14,72 @@ export class AppComponent implements OnInit {
 
   @ViewChild("dynamicForms", {static: true}) dynamicForms: IBAutoFormComponent;
 
+  terms = [
+    {
+      title: 'Australia',
+      key: 'australia'
+    },
+    {
+      title: 'Argentina',
+      key: 'argentina'
+    },
+    {
+      title: 'Netherlands',
+      key: 'netherlands'
+    },
+    {
+      title: 'Sweden',
+      key: 'sweden'
+    },
+    {
+      title: 'Africa',
+      key: 'africa'
+    },
+    {
+      title: 'Europe',
+      key: 'europe'
+    },
+    {
+      title: 'Kongo',
+      key: 'kongo'
+    },
+    {
+      title: 'Egypt',
+      key: 'egypt'
+    },
+    {
+      title: 'Albania',
+      key: 'albania'
+    },
+    {
+      title: 'Austria',
+      key: 'austria'
+    },
+    {
+      title: 'Angola',
+      key: 'angola'
+    },
+  ];
+
+  terms$: Subject<any> = new Subject<any>();
+
   public controlGroups: IBAutoFormControlGroup[] = [
     {
       title: 'Personal Details',
       className: 'personal-details-section',
       controls: [
         {
+          id: "autocomplete",
+          title: "Autocomplete",
+          type: "autocomplete",
+          items: this.terms
+        },
+        {
           id: "first_name",
           title: "First Name",
           defaultValue: "John",
           placeholder: "Please enter your first name",
+          className: "first-name",
           type: "text",
           validations: [
             {
@@ -42,6 +99,7 @@ export class AppComponent implements OnInit {
         {
           id: "last_name",
           title: "Last Name",
+          className: "last-name",
           placeholder: "Please enter your last name",
           type: "text"
         },
@@ -65,6 +123,7 @@ export class AppComponent implements OnInit {
         },
         {
           id: 'date',
+          className: "date-picker",
           type: 'datepicker',
           title: 'Birthday',
         },
@@ -93,6 +152,7 @@ export class AppComponent implements OnInit {
         {
           id: "terms",
           title: "I agree to the Terms & Conditions",
+          className: "terms",
           type: "checkbox",
           validations: [
             {
@@ -104,6 +164,7 @@ export class AppComponent implements OnInit {
         {
           id: "select",
           title: "Select plan",
+          className: "select-plane",
           type: "select",
           placeholder: "Please select a plan",
           validations: [
@@ -132,6 +193,7 @@ export class AppComponent implements OnInit {
         {
           id: 'message',
           type: 'textarea',
+          className: 'message',
           title: 'Message',
           rows: 5,
           defaultValue: 'Text123'
@@ -169,6 +231,7 @@ export class AppComponent implements OnInit {
         },
         {
           id: 'file',
+          className: 'file',
           type: 'file',
           title: 'Please upload a text file',
         }
@@ -192,7 +255,10 @@ export class AppComponent implements OnInit {
   }
 
   ngOnInit(): void {
-
+    setTimeout(() => {
+      this.terms$.next(this.terms);
+      console.log("terms$");
+    }, 2000);
   }
 
   submit() {

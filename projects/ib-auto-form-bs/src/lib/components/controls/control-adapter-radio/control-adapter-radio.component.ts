@@ -6,6 +6,7 @@ import {BasicControlAdapterComponent} from "../basic-control-adapter.component";
   template: `
       <div *ngIf="form"
            [formGroup]="form"
+           [ngClass]="control.className"
            class="form-group form-check">
           <ng-container *ngIf="control.items && control.items.length">
               <div class="form-check" *ngFor="let item of control.items;index as i">

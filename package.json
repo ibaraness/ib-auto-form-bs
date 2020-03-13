@@ -24,6 +24,8 @@
     "core-js": "^2.6.11",
     "ib-auto-form-bs": "file:dist/ib-auto-form-bs",
     "lodash": "^4.17.15",
+    "npm-watch": "^0.6.0",
+    "popper.js": "^1.16.1",
     "rxjs": "^6.5.4",
     "zone.js": "~0.9.1"
   },

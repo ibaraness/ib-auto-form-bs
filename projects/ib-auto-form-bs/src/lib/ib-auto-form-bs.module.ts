@@ -17,6 +17,11 @@ import {ControlAdapterDatepickerComponent} from "./components/controls/control-a
 import {AngularMyDatePickerModule} from 'angular-mydatepicker';
 import {IBCustomValueAccessorDirective} from "./directives/custom-value-accessor/i-b-custom-value-accessor.directive";
 import {BasicControlAdapterComponent} from "./components/controls/basic-control-adapter.component";
+import { NgxPopper } from 'angular-popper';
+import {PopoverBaseDirective} from "./directives/popper/popper-base.directive";
+import {PopperDirective} from "./directives/popper/popper.directive";
+import {ControlAdapterAutocompleteComponent} from "./components/controls/control-adapter-autocomplete/ControlAdapterAutocomplete.component";
+
 
 @NgModule({
   declarations: [
@@ -32,7 +37,10 @@ import {BasicControlAdapterComponent} from "./components/controls/basic-control-
     ControlAdapterFileComponent,
     ControlAdapterTextInputComponent,
     ControlAdapterDatepickerComponent,
-    IBCustomValueAccessorDirective
+    ControlAdapterAutocompleteComponent,
+    IBCustomValueAccessorDirective,
+    PopoverBaseDirective,
+    PopperDirective
   ],
   exports: [
     IBAutoFormComponent,
@@ -46,7 +54,9 @@ import {BasicControlAdapterComponent} from "./components/controls/basic-control-
     ControlAdapterFileComponent,
     ControlAdapterTextInputComponent,
     ControlAdapterDatepickerComponent,
-    IBCustomValueAccessorDirective
+    ControlAdapterAutocompleteComponent,
+    IBCustomValueAccessorDirective,
+    PopperDirective
   ],
   entryComponents: [
     ControlAdapterCheckboxComponent,
@@ -56,8 +66,9 @@ import {BasicControlAdapterComponent} from "./components/controls/basic-control-
     ControlAdapterFileComponent,
     ControlAdapterTextInputComponent,
     ControlAdapterDatepickerComponent,
+    ControlAdapterAutocompleteComponent
   ],
-  imports: [CommonModule, ReactiveFormsModule, FormsModule, AngularMyDatePickerModule],
+  imports: [CommonModule, ReactiveFormsModule, FormsModule, AngularMyDatePickerModule, NgxPopper],
 })
 export class IbAutoFormBsModule {
   static forRoot(): ModuleWithProviders {

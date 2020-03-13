@@ -6,6 +6,7 @@ import {BasicControlAdapterComponent} from "../basic-control-adapter.component";
   template: `
       <div *ngIf="form"
            [formGroup]="form"
+           [ngClass]="control.className"
            class="form-group">
           <label [for]="now+control.id" [ngClass]="{'required': required}">{{control.title}}</label>
           <input type="file"

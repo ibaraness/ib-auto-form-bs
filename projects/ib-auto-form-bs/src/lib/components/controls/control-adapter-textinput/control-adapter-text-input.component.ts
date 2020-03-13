@@ -1,4 +1,4 @@
-import {Component, OnInit} from "@angular/core";
+import {Component, OnInit, ViewChild} from "@angular/core";
 import {IBAutoFormControlAdapter} from "../../../models/ib-auto-form";
 import * as _ from "lodash";
 import {BasicControlAdapterComponent} from "../basic-control-adapter.component";
@@ -8,6 +8,7 @@ import {BasicControlAdapterComponent} from "../basic-control-adapter.component";
   template: `
       <div *ngIf="form"
            class="form-group"
+           [ngClass]="control.className"
            [formGroup]="form">
 
           <label *ngIf="control.title" [for]="now+control.id" [ngClass]="{'required': required}"
@@ -32,6 +33,9 @@ import {BasicControlAdapterComponent} from "../basic-control-adapter.component";
 })
 export class ControlAdapterTextInputComponent extends BasicControlAdapterComponent
   implements IBAutoFormControlAdapter, OnInit {
+
+  @ViewChild('popoverTarget', {static: false}) popoverTarget: any;
+
   inputType: string;
 
   ngOnInit(): void {

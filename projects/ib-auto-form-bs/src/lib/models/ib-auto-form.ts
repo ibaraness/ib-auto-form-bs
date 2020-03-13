@@ -26,7 +26,8 @@ export enum IBControlType {
   RADIO = 'radio',
   TEXTAREA = 'textarea',
   FILE = 'file',
-  DATE_PICKER = 'datepicker'
+  DATE_PICKER = 'datepicker',
+  AUTOCOMPLETE = 'autocomplete'
 }
 
 /**

@@ -8,6 +8,10 @@ import {FormsModule, ReactiveFormsModule} from "@angular/forms";
 import {IbAutoFormBsModule} from "ib-auto-form-bs";
 import {CustomGroupComponent} from "./custom_controls/components/custom-group.component";
 import {CustomVaInputComponent} from "./custom_controls/components/custom-va-input.component";
+import {PopperComponent} from "./popover/popperComponent";
+import {PopperDirective} from "./popover/directives/popper.directive";
+import {AutocompleteComponent} from "./popover/autocomplete.component";
+import {PopoverBaseDirective} from "./popover/directives/popover-base.directive";
 
 
 @NgModule({
@@ -15,7 +19,11 @@ import {CustomVaInputComponent} from "./custom_controls/components/custom-va-inp
     AppComponent,
     TextInputComponent,
     CustomGroupComponent,
-    CustomVaInputComponent
+    CustomVaInputComponent,
+    PopperComponent,
+    PopoverBaseDirective,
+    PopperDirective,
+    AutocompleteComponent
   ],
   entryComponents: [TextInputComponent, CustomGroupComponent, CustomVaInputComponent],
   imports: [
